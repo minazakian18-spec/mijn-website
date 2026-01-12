@@ -3,251 +3,198 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Telepizza Amstelveen — Demo</title>
-  <meta name="description" content="Telepizza Amstelveen demo website — pizza, grill, snelle bezorging." />
-
+  <title>Telepizza Amstelveen — Restaurant & Bar</title>
+  <meta name="description" content="Restaurant & bar in Amstelveen. Reserveer of bestel online." />
   <style>
     :root{
-      --bg:#07070a;
-      --card: rgba(255,255,255,.06);
-      --stroke: rgba(255,255,255,.12);
-      --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.68);
-      --r:18px;
-      --max: 1150px;
-      --shadow: 0 24px 90px rgba(0,0,0,.55);
+      --bg:#0b0c10;
+      --surface:#10131a;
+      --surface2:#141826;
+      --line:rgba(255,255,255,.10);
+      --text:rgba(255,255,255,.92);
+      --muted:rgba(255,255,255,.72);
+      --brand:#e11d48;
+      --brand2:#16a34a;
+      --r:16px;
+      --max:1120px;
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{
       margin:0;
+      font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Arial;
       color:var(--text);
-      font: 16px/1.55 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background:
-        radial-gradient(900px 520px at 15% -10%, rgba(255, 0, 92,.32), transparent 60%),
-        radial-gradient(900px 520px at 95% 0%, rgba(0, 255, 210,.18), transparent 60%),
-        radial-gradient(900px 520px at 45% 110%, rgba(255, 196, 0,.14), transparent 60%),
-        var(--bg);
-      overflow-x:hidden;
+      background:var(--bg);
     }
     a{color:inherit}
-    .wrap{max-width:var(--max); margin:0 auto; padding: 0 20px;}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 18px;}
     .topbar{
       position:sticky; top:0; z-index:50;
-      border-bottom:1px solid rgba(255,255,255,.08);
-      background: rgba(7,7,10,.55);
-      backdrop-filter: blur(12px);
+      background:rgba(11,12,16,.78);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid var(--line);
     }
     .toprow{
       display:flex; align-items:center; justify-content:space-between;
-      padding: 14px 0;
-      gap:12px;
+      padding:12px 0; gap:12px;
     }
-    .brand{
+    .brandMark{
       display:flex; align-items:center; gap:10px;
       text-decoration:none;
-      font-weight:900;
+      font-weight:800;
       letter-spacing:.2px;
     }
-    .mark{
-      width:36px; height:36px; border-radius: 12px;
-      background: linear-gradient(135deg, rgba(255,0,92,1), rgba(255,196,0,1));
-      box-shadow: 0 18px 60px rgba(255,0,92,.25);
+    .logo{
+      width:34px; height:34px; border-radius:10px;
+      background: linear-gradient(135deg,var(--brand),#f59e0b);
     }
-    nav{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end}
+    nav{display:flex; gap:10px; flex-wrap:wrap}
     nav a{
-      color: var(--muted);
       text-decoration:none;
-      padding: 8px 10px;
-      border-radius: 10px;
-      border: 1px solid transparent;
+      color:var(--muted);
+      padding:8px 10px;
+      border-radius:10px;
+    }
+    nav a:hover{background:rgba(255,255,255,.06); color:var(--text);}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:12px 16px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.06);
+      text-decoration:none;
+      font-weight:700;
       transition:.15s ease;
     }
-    nav a:hover{
-      color: var(--text);
-      border-color: rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-    }
-
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center; gap:10px;
-      padding: 12px 16px;
-      border-radius: 999px;
-      border:1px solid var(--stroke);
-      background: rgba(255,255,255,.06);
-      text-decoration:none;
-      transition: transform .15s ease, border-color .15s ease, background .15s ease;
-      user-select:none;
-      font-weight:700;
-    }
-    .btn:hover{transform: translateY(-1px); border-color: rgba(255,255,255,.22);}
+    .btn:hover{transform:translateY(-1px); background:rgba(255,255,255,.08);}
     .btn.primary{
       border:0;
-      color:#140b0f;
-      background: linear-gradient(135deg, rgba(255,0,92,.98), rgba(255,196,0,.92));
-      box-shadow: 0 18px 70px rgba(255,0,92,.16);
+      background:linear-gradient(135deg,var(--brand),#f59e0b);
+      color:#19070d;
     }
-    .pill{
-      display:inline-flex; align-items:center; gap:10px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.06);
-      padding: 8px 12px;
-      border-radius: 999px;
-      color: var(--muted);
-      backdrop-filter: blur(10px);
-    }
-    .card{
-      background: var(--card);
-      border: 1px solid var(--stroke);
-      border-radius: var(--r);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(14px);
-    }
-    .grid{display:grid; gap:16px;}
-    .muted{color:var(--muted)}
-    .h1{
-      font-size: clamp(34px, 4.8vw, 60px);
-      letter-spacing: -0.02em;
-      line-height: 1.05;
-      margin: 10px 0 12px;
-    }
-    .h2{
-      font-size: clamp(22px, 2.4vw, 30px);
-      letter-spacing: -0.01em;
-      margin: 0 0 10px;
+    .btn.secondary{
+      border:0;
+      background:linear-gradient(135deg,var(--brand2),#22c55e);
+      color:#05160b;
     }
 
     /* HERO */
-    .hero{padding: 28px 0 14px;}
-    .heroGrid{display:grid; grid-template-columns: 1.1fr .9fr; gap:16px; align-items:stretch;}
-    .heroBox{padding: 22px;}
-    .heroActions{display:flex; gap:12px; flex-wrap:wrap; margin-top: 14px;}
-    .stats{display:grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 14px;}
-    .stat{
-      padding: 14px;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.05);
+    .hero{
+      padding:18px 0 10px;
     }
-    .stat b{font-size: 18px}
-    .heroVisual{
-      position:relative; overflow:hidden;
-      min-height: 380px;
-      border-radius: var(--r);
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap:18px;
+      align-items:stretch;
     }
-    .heroVisual::before{
-      content:"";
-      position:absolute; inset:-2px;
-      background:
-        radial-gradient(420px 260px at 25% 20%, rgba(255,196,0,.24), transparent 60%),
-        radial-gradient(420px 260px at 80% 20%, rgba(255,0,92,.22), transparent 60%),
-        radial-gradient(420px 260px at 55% 90%, rgba(0,255,210,.14), transparent 60%);
-      opacity:.9;
-    }
-    .menuBoard{
-      position:absolute; inset: 16px;
-      border-radius: 18px;
-      background: rgba(8,10,16,.78);
-      border: 1px solid rgba(255,255,255,.12);
-      box-shadow: 0 22px 70px rgba(0,0,0,.55);
+    .panel{
+      background:var(--surface);
+      border:1px solid var(--line);
+      border-radius:var(--r);
       overflow:hidden;
     }
-    .boardTop{
-      display:flex; align-items:center; justify-content:space-between;
-      gap: 10px;
-      padding: 12px 14px;
-      border-bottom: 1px solid rgba(255,255,255,.09);
-      background: rgba(255,255,255,.04);
+    .heroCopy{padding:22px;}
+    .eyebrow{
+      display:inline-flex; gap:8px; align-items:center;
+      color:var(--muted);
+      border:1px solid var(--line);
+      padding:6px 10px;
+      border-radius:999px;
+      background:rgba(255,255,255,.04);
+      font-size:13px;
     }
-    .dots{display:flex; gap:7px}
-    .dot{width:10px; height:10px; border-radius: 999px; background: rgba(255,255,255,.16)}
-    .boardBody{padding: 14px;}
-    .chips{display:flex; gap:10px; flex-wrap:wrap; margin: 10px 0 12px;}
-    .chip{
-      padding: 8px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.06);
-      color: var(--muted);
-      font-size: 13px;
+    h1{
+      margin:12px 0 10px;
+      font-size: clamp(30px, 4.5vw, 52px);
+      line-height:1.05;
+      letter-spacing:-.02em;
     }
-    .items{display:grid; grid-template-columns: 1fr; gap: 10px;}
-    .item{
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.05);
-      padding: 12px;
-      display:flex; justify-content:space-between; gap:10px;
+    .sub{color:var(--muted); margin:0 0 14px;}
+    .ctaRow{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px;}
+    .quick{
+      display:grid;
+      grid-template-columns: repeat(3,1fr);
+      gap:10px;
+      margin-top:16px;
     }
-    .item b{display:block; margin-bottom: 2px}
-    .item small{color: var(--muted)}
-    .price{font-weight:900}
+    .q{
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:12px;
+    }
+    .q b{display:block; margin-bottom:4px;}
+    .q span{color:var(--muted); font-size:13px;}
+
+    .heroPhoto{
+      position:relative;
+      min-height: 360px;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.65)),
+        url("https://images.unsplash.com/photo-1548365328-9f547f1f5c75?auto=format&fit=crop&w=1600&q=70");
+      background-size:cover;
+      background-position:center;
+    }
+    .stamp{
+      position:absolute; left:16px; bottom:16px;
+      background:rgba(0,0,0,.45);
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:12px 14px;
+      max-width: 420px;
+    }
+    .stamp b{display:block;}
+    .stamp small{color:var(--muted);}
 
     /* SECTIONS */
-    section{padding: 14px 0;}
-    .sectionHead{display:flex; align-items:flex-end; justify-content:space-between; gap: 14px; margin-bottom: 12px;}
-    .cards3{grid-template-columns: repeat(3, 1fr);}
-    .boxPad{padding:18px;}
-    .icon{
-      width:40px; height:40px; border-radius: 14px;
-      display:grid; place-items:center;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.06);
+    section{padding:18px 0;}
+    .sectionHead{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap:14px; margin-bottom:12px;
     }
+    .sectionHead h2{margin:0; font-size: clamp(20px,2.2vw,28px);}
+    .sectionHead p{margin:6px 0 0; color:var(--muted);}
 
-    /* MENU */
-    .menuGrid{grid-template-columns: repeat(3, 1fr);}
-    .menuCard{padding:18px; position:relative; overflow:hidden;}
-    .menuCard::after{
-      content:"";
-      position:absolute; inset:-40px;
-      background:
-        radial-gradient(240px 170px at 20% 20%, rgba(255,0,92,.18), transparent 65%),
-        radial-gradient(240px 170px at 85% 30%, rgba(255,196,0,.14), transparent 65%);
-      transform: rotate(6deg);
-      opacity:.9;
+    .grid3{display:grid; grid-template-columns: repeat(3,1fr); gap:14px;}
+    .card{
+      background:var(--surface2);
+      border:1px solid var(--line);
+      border-radius:var(--r);
+      padding:16px;
     }
-    .menuCard > *{position:relative; z-index:1}
-    .menuCard h3{margin:10px 0 6px}
-    .line{display:flex; justify-content:space-between; gap:10px; margin-top:10px; color:var(--muted)}
-    .line b{color:var(--text)}
+    .card h3{margin:10px 0 6px; font-size:16px;}
+    .card p{margin:0; color:var(--muted);}
 
-    /* REVIEWS */
-    .two{grid-template-columns: 1fr 1fr;}
-    .quote{padding:18px;}
-    .quote b{display:block; margin-bottom:6px;}
-    .stars{letter-spacing:1px}
-
-    /* INFO */
-    .infoGrid{grid-template-columns: 1.15fr .85fr;}
-    .list{margin: 0; padding-left: 18px; color: var(--muted);}
-    .badge{
-      display:inline-flex; align-items:center; gap:8px;
-      padding: 8px 10px;
-      border-radius: 999px;
-      background: rgba(0,255,210,.12);
-      border: 1px solid rgba(0,255,210,.18);
-      color: rgba(255,255,255,.9);
-      font-size: 13px;
+    .menuGrid{display:grid; grid-template-columns: repeat(2,1fr); gap:14px;}
+    .menuItem{
+      display:flex; justify-content:space-between; gap:12px;
+      padding:14px;
+      border-radius:14px;
+      background:rgba(255,255,255,.04);
+      border:1px solid var(--line);
     }
+    .menuItem b{display:block;}
+    .menuItem span{display:block; color:var(--muted); font-size:13px;}
+    .price{font-weight:900;}
 
+    .infoGrid{display:grid; grid-template-columns: 1.15fr .85fr; gap:14px;}
+    .list{margin:0; padding-left:18px; color:var(--muted);}
     footer{
-      padding: 26px 0 40px;
-      border-top: 1px solid rgba(255,255,255,.08);
-      margin-top: 18px;
-      color: var(--muted);
+      margin-top:18px;
+      border-top:1px solid var(--line);
+      padding:22px 0 34px;
+      color:var(--muted);
     }
-    .footRow{display:flex; justify-content:space-between; gap: 10px; flex-wrap:wrap;}
+    .footRow{display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;}
 
-    /* Responsive */
     @media (max-width: 920px){
       nav{display:none;}
-      .heroGrid{grid-template-columns: 1fr;}
-      .cards3{grid-template-columns: 1fr;}
-      .menuGrid{grid-template-columns: 1fr;}
-      .two{grid-template-columns: 1fr;}
-      .infoGrid{grid-template-columns: 1fr;}
-      .stats{grid-template-columns: 1fr;}
+      .heroGrid{grid-template-columns:1fr;}
+      .grid3{grid-template-columns:1fr;}
+      .menuGrid{grid-template-columns:1fr;}
+      .infoGrid{grid-template-columns:1fr;}
+      .quick{grid-template-columns:1fr;}
     }
   </style>
 </head>
@@ -256,19 +203,19 @@
   <div class="topbar">
     <div class="wrap">
       <div class="toprow">
-        <a class="brand" href="#top">
-          <span class="mark" aria-hidden="true"></span>
+        <a class="brandMark" href="#top">
+          <span class="logo" aria-hidden="true"></span>
           <span>Telepizza Amstelveen</span>
         </a>
 
         <nav aria-label="Navigatie">
-          <a href="#specials">Specials</a>
+          <a href="#concept">Concept</a>
           <a href="#menu">Menu</a>
           <a href="#reviews">Reviews</a>
           <a href="#info">Info</a>
         </nav>
 
-        <a class="btn primary" href="#bestellen">Bestel nu →</a>
+        <a class="btn primary" href="#menu">Bestel online</a>
       </div>
     </div>
   </div>
@@ -276,101 +223,58 @@
   <main id="top" class="wrap">
     <section class="hero">
       <div class="heroGrid">
-        <div class="card heroBox">
-          <span class="pill">🍕 Pizza • 🔥 Grill • 🚀 Snel bezorgd</span>
-          <h1 class="h1">De stad ruikt naar vuur — jij hoeft alleen te kiezen.</h1>
-          <p class="muted">
-            Unieke Telepizza-ervaring: dunne bodems, hot-from-the-oven, en grill classics.
-            Deze pagina is een demo die je zo kunt vullen met jouw echte menu’s & acties.
-          </p>
+        <div class="panel">
+          <div class="heroCopy">
+            <span class="eyebrow">🍕 Restaurant & Bar • Sinds 1984</span>
+            <h1>Italiaanse classics, grill vibes — en altijd vers uit de oven.</h1>
+            <p class="sub">
+              Dit is een “menselijke” restaurant-landing: duidelijk, rustig, en gemaakt voor reserveren & bestellen.
+            </p>
 
-          <div class="heroActions" id="bestellen">
-            <a class="btn primary" href="#menu">Bekijk menu</a>
-            <a class="btn" href="#info">Openingstijden</a>
-            <a class="btn" href="#reviews">Reviews</a>
-          </div>
+            <div class="ctaRow">
+              <a class="btn primary" href="#menu">Bestel online</a>
+              <a class="btn secondary" href="#info">Reserveer</a>
+              <a class="btn" href="#info">Contact</a>
+            </div>
 
-          <div class="stats">
-            <div class="stat"><b>4.8★</b><div class="muted">klantbeoordeling</div></div>
-            <div class="stat"><b>15–30 min</b><div class="muted">bezorgtijd (demo)</div></div>
-            <div class="stat"><b>Oven+Grill</b><div class="muted">2 werelden, 1 plek</div></div>
+            <div class="quick">
+              <div class="q"><b>4.8 ★</b><span>beoordeling (demo)</span></div>
+              <div class="q"><b>Oven & Grill</b><span>pizza • ribs • steak</span></div>
+              <div class="q"><b>Amstelveen</b><span>afhalen & bezorgen</span></div>
+            </div>
           </div>
         </div>
 
-        <div class="card heroVisual" aria-label="Menu preview">
-          <div class="menuBoard">
-            <div class="boardTop">
-              <div class="dots" aria-hidden="true">
-                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-              </div>
-              <span class="badge">LIVE MENU PREVIEW</span>
-            </div>
-
-            <div class="boardBody">
-              <div class="chips">
-                <span class="chip">Dunne bodem</span>
-                <span class="chip">Hot & fresh</span>
-                <span class="chip">Family deals</span>
-                <span class="chip">Grill specials</span>
-              </div>
-
-              <div class="items">
-                <div class="item">
-                  <div>
-                    <b>🔥 Pizza Diablo</b>
-                    <small>Pittig, kaas, pepperoni, jalapeño</small>
-                  </div>
-                  <div class="price">€12,95</div>
-                </div>
-                <div class="item">
-                  <div>
-                    <b>🥩 Grill Plate</b>
-                    <small>Steak bites + saus + friet</small>
-                  </div>
-                  <div class="price">€16,50</div>
-                </div>
-                <div class="item">
-                  <div>
-                    <b>🍕 Family Box</b>
-                    <small>2 pizza’s + sides + drankje</small>
-                  </div>
-                  <div class="price">€29,95</div>
-                </div>
-              </div>
-
-              <p class="muted" style="margin:12px 0 0;">
-                Tip: vervang demo-prijzen/teksten met jouw echte menu.
-              </p>
-            </div>
+        <div class="panel heroPhoto">
+          <div class="stamp">
+            <b>Vandaag populair</b>
+            <small>Margherita • Diablo • Ribs Plate (demo)</small>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="specials">
+    <section id="concept">
       <div class="sectionHead">
         <div>
-          <h2 class="h2">Specials die aandacht pakken</h2>
-          <p class="muted">Korte, krachtige blocks die meteen “zin” geven.</p>
+          <h2>Waarom mensen terugkomen</h2>
+          <p>Eenvoudig, duidelijk, en focust op smaak & service.</p>
         </div>
-        <a class="btn" href="#menu">Ga naar menu →</a>
+        <a class="btn" href="#info">Bekijk info →</a>
       </div>
 
-      <div class="grid cards3">
-        <div class="card boxPad">
-          <div class="icon">⚡</div>
-          <h3 style="margin:10px 0 6px;">Oven-snel</h3>
-          <p class="muted" style="margin:0;">Wij maken ’m direct en sturen ’m heet jouw kant op.</p>
+      <div class="grid3">
+        <div class="card">
+          <h3>Verse oven-bodem</h3>
+          <p>Dunne bodem, knapperig, en snel geserveerd.</p>
         </div>
-        <div class="card boxPad">
-          <div class="icon">🔥</div>
-          <h3 style="margin:10px 0 6px;">Grill vibes</h3>
-          <p class="muted" style="margin:0;">Steaks, ribs & sides — alsof je ter plekke eet.</p>
+        <div class="card">
+          <h3>Grill & sides</h3>
+          <p>Ribs, steak bites en comfort sides.</p>
         </div>
-        <div class="card boxPad">
-          <div class="icon">🎯</div>
-          <h3 style="margin:10px 0 6px;">Deal of the day</h3>
-          <p class="muted" style="margin:0;">Zet hier je dagelijkse actie of combi-deal.</p>
+        <div class="card">
+          <h3>Voor gezinnen</h3>
+          <p>Deels & combo’s die logisch zijn om te kiezen.</p>
         </div>
       </div>
     </section>
@@ -378,56 +282,66 @@
     <section id="menu">
       <div class="sectionHead">
         <div>
-          <h2 class="h2">Menu (demo cards)</h2>
-          <p class="muted">Vervang de tekst met jouw echte producten.</p>
+          <h2>Menu highlights</h2>
+          <p>Vervang deze items met jouw echte menu. (Ik kan ‘m exact invullen.)</p>
         </div>
       </div>
 
-      <div class="grid menuGrid">
-        <div class="card menuCard">
-          <span class="pill">🍕 Pizza</span>
-          <h3>Portofino Classic</h3>
-          <p class="muted" style="margin:0;">Tomaat, mozzarella, ham, champignon.</p>
-          <div class="line"><span>Vanaf</span> <b>€10,95</b></div>
+      <div class="menuGrid">
+        <div class="card">
+          <h3 style="margin:0 0 10px;">Pizza</h3>
+          <div class="menuItem">
+            <div><b>Margherita</b><span>tomaat • mozzarella • basil</span></div>
+            <div class="price">€10,95</div>
+          </div>
+          <div class="menuItem" style="margin-top:10px;">
+            <div><b>Diablo</b><span>pepperoni • jalapeño • spicy</span></div>
+            <div class="price">€12,95</div>
+          </div>
         </div>
 
-        <div class="card menuCard">
-          <span class="pill">🥩 Grill</span>
-          <h3>Ribs & Sauce</h3>
-          <p class="muted" style="margin:0;">Sticky ribs, friet, coleslaw.</p>
-          <div class="line"><span>Vanaf</span> <b>€18,50</b></div>
-        </div>
-
-        <div class="card menuCard">
-          <span class="pill">🥤 Drinks</span>
-          <h3>House Lemonade</h3>
-          <p class="muted" style="margin:0;">Fris, citrus, mint (demo).</p>
-          <div class="line"><span>Vanaf</span> <b>€3,50</b></div>
+        <div class="card">
+          <h3 style="margin:0 0 10px;">Grill</h3>
+          <div class="menuItem">
+            <div><b>Ribs Plate</b><span>sticky ribs • friet • coleslaw</span></div>
+            <div class="price">€18,50</div>
+          </div>
+          <div class="menuItem" style="margin-top:10px;">
+            <div><b>Steak Bites</b><span>saus naar keuze • sides</span></div>
+            <div class="price">€16,50</div>
+          </div>
         </div>
       </div>
 
-      <div style="margin-top:14px; display:flex; gap:12px; flex-wrap:wrap;">
-        <a class="btn primary" href="#bestellen">Bestel nu →</a>
-        <a class="btn" href="#info">Bekijk info</a>
+      <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="btn primary" href="#info">Reserveer</a>
+        <a class="btn" href="#info">Bel / WhatsApp</a>
       </div>
     </section>
 
     <section id="reviews">
       <div class="sectionHead">
         <div>
-          <h2 class="h2">Reviews (demo)</h2>
-          <p class="muted">Zet hier je Google reviews / TheFork reviews later.</p>
+          <h2>Wat gasten zeggen</h2>
+          <p>Hier kun je later echte reviews plakken (Google/TheFork).</p>
         </div>
       </div>
 
-      <div class="grid two">
-        <div class="card quote">
-          <b>“Heet, snel en echt goed. Die dunne bodem is top.”</b>
-          <div class="muted"><span class="stars">★★★★★</span> — Samira</div>
+      <div class="grid3">
+        <div class="card">
+          <h3 style="margin-top:0;">★★★★★</h3>
+          <p>“Heet, snel en echt lekker. Dunne bodem is top.”</p>
+          <p class="muted" style="margin:10px 0 0;">— Samira</p>
         </div>
-        <div class="card quote">
-          <b>“Grill plate voelde luxe, alsof je uit eten was.”</b>
-          <div class="muted"><span class="stars">★★★★★</span> — Youssef</div>
+        <div class="card">
+          <h3 style="margin-top:0;">★★★★★</h3>
+          <p>“Grill voelde luxe. Alsof je uit eten was.”</p>
+          <p class="muted" style="margin:10px 0 0;">— Youssef</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0;">★★★★☆</h3>
+          <p>“Snelle bezorging, goede porties.”</p>
+          <p class="muted" style="margin:10px 0 0;">— Noor</p>
         </div>
       </div>
     </section>
@@ -435,56 +349,48 @@
     <section id="info">
       <div class="sectionHead">
         <div>
-          <h2 class="h2">Info</h2>
-          <p class="muted">Vul dit met je echte gegevens.</p>
+          <h2>Openingstijden & contact</h2>
+          <p>Vul je echte gegevens in.</p>
         </div>
       </div>
 
-      <div class="grid infoGrid">
-        <div class="card boxPad">
-          <span class="pill">🕒 Openingstijden (demo)</span>
+      <div class="infoGrid">
+        <div class="card">
+          <h3 style="margin-top:0;">Openingstijden (demo)</h3>
           <ul class="list">
             <li>Ma–Do: 16:00 – 23:00</li>
             <li>Vr–Za: 16:00 – 00:00</li>
             <li>Zo: 16:00 – 23:00</li>
           </ul>
 
-          <div style="margin-top:14px;">
-            <span class="pill">📍 Locatie</span>
-            <p class="muted" style="margin:10px 0 0;">
-              Amstelveen (vul adres in)
-            </p>
-          </div>
+          <h3>Locatie</h3>
+          <p class="muted" style="margin:0;">Amstelveen — (adres hier)</p>
         </div>
 
-        <div class="card boxPad">
-          <span class="pill">📲 Contact</span>
-          <p class="muted" style="margin:10px 0 12px;">
-            Voeg hier je telefoonnummer, WhatsApp-link of bestelplatform toe.
-          </p>
-
-          <div class="grid" style="grid-template-columns: 1fr; gap:10px;">
-            <a class="btn primary" href="#bestellen">Bestel nu →</a>
-            <a class="btn" href="mailto:info@telepizza-demo.nl">Mail (demo)</a>
+        <div class="card">
+          <h3 style="margin-top:0;">Actie-knoppen</h3>
+          <div style="display:grid; gap:10px;">
+            <a class="btn primary" href="#">Bestel online (link)</a>
+            <a class="btn secondary" href="#">Reserveer (link)</a>
+            <a class="btn" href="mailto:info@telepizza-amstelveen.nl">Mail</a>
           </div>
-
           <p class="muted" style="margin:12px 0 0; font-size:13px;">
-            Tip: ik kan ook een echte “Bestel” knop maken naar jouw bestelpagina.
+            Zet hier je echte bestel/reserveer links in en klaar.
           </p>
         </div>
       </div>
     </section>
 
     <footer>
-      <div class="wrap footRow">
-        <div>© <span id="year"></span> Telepizza Amstelveen — Demo</div>
-        <div class="muted">Gebouwd met pure HTML/CSS</div>
+      <div class="footRow">
+        <div>© <span id="y"></span> Telepizza Amstelveen</div>
+        <div>Restaurant & Bar</div>
       </div>
     </footer>
   </main>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('y').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>

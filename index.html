@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <title>Mijn eerste website</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    body{
+      margin:0;
+      font-family: system-ui, Arial, sans-serif;
+      background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+      color:#fff;
+    }
+    header{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:40px;
+    }
+    .box{
+      max-width:700px;
+      background:rgba(0,0,0,0.45);
+      padding:40px;
+      border-radius:20px;
+      box-shadow:0 20px 60px rgba(0,0,0,.6);
+    }
+    h1{
+      font-size:42px;
+      margin-bottom:10px;
+    }
+    p{
+      font-size:18px;
+      line-height:1.6;
+      color:#ddd;
+    }
+    .btns{
+      margin-top:30px;
+      display:flex;
+      gap:15px;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+    a.btn{
+      text-decoration:none;
+      padding:14px 26px;
+      border-radius:999px;
+      font-weight:600;
+      transition:.2s;
+    }
+    .primary{
+      background:#00ffd5;
+      color:#001b1f;
+    }
+    .primary:hover{
+      transform:translateY(-2px);
+    }
+    .ghost{
+      border:1px solid #fff;
+      color:#fff;
+    }
+    section{
+      padding:80px 20px;
+      max-width:900px;
+      margin:auto;
+    }
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:20px;
+    }
+    .card{
+      background:rgba(255,255,255,.08);
+      padding:25px;
+      border-radius:18px;
+    }
+    footer{
+      text-align:center;
+      padding:30px;
+      color:#aaa;
+      font-size:14px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="box">
+    <h1>🚀 Mijn eerste website</h1>
+    <p>
+      Deze website heb ik zelf gebouwd met HTML & CSS  
+      en staat <b>gratis online</b> via GitHub Pages.
+    </p>
+
+    <div class="btns">
+      <a href="#over" class="btn primary">Bekijk meer</a>
+      <a href="#contact" class="btn ghost">Contact</a>
+    </div>
+  </div>
+</header>
+
+<section id="over">
+  <h2>💡 Over deze website</h2>
+  <p>
+    Dit is een simpele maar professionele one-page website.
+    Perfect als startpunt voor een bedrijf, portfolio of restaurant.
+  </p>
+
+  <div class="cards">
+    <div class="card">
+      <h3>⚡ Snel</h3>
+      <p>Geen frameworks, alleen pure HTML & CSS.</p>
+    </div>
+    <div class="card">
+      <h3>📱 Responsive</h3>
+      <p>Ziet er goed uit op mobiel én desktop.</p>
+    </div>
+    <div class="card">
+      <h3>💸 Gratis</h3>
+      <p>Hosting via GitHub Pages kost €0.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>📬 Contact</h2>
+  <p>
+    Dit is een demo-pagina.  
+    Later kan dit gekoppeld worden aan e-mail of WhatsApp.
+  </p>
+</section>
+
+<footer>
+  © <span id="year"></span> Mijn Website — gebouwd met ❤️
+</footer>
+
+<script>
+  document.getElementById("year").textContent =
+    new Date().getFullYear();
+</script>
+
+</body>
+</html>

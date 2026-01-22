@@ -3,297 +3,708 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Telepizza Amstelveen — Sinds 1984</title>
-  <meta name="description" content="Telepizza Amstelveen. Online bestellen of reserveren. Sinds 1984." />
+  <title>Webbo Horeca — Websites voor horeca die verkopen</title>
+  <meta name="description" content="Webbo Horeca bouwt snelle websites voor horecaondernemers: beter vindbaar, hogere conversie en meer directe bestellingen zonder commissies." />
 
   <style>
     :root{
-      --bg:#0b0b0b;
-      --text:#fff;
-      --muted: rgba(255,255,255,.78);
-      --line: rgba(255,255,255,.14);
-      --panel:#1c1c1c;
-      --panel2:#151515;
-      --max: 1100px;
+      --bg:#070a0f;
+      --panel:#0c1220;
+      --panel2:#0a0f1a;
+      --text:#ffffff;
+      --muted: rgba(255,255,255,.74);
+      --line: rgba(255,255,255,.12);
+      --brand:#7c3aed;   /* paars */
+      --brand2:#22c55e;  /* groen accent */
+      --max: 1120px;
+      --shadow: 0 26px 80px rgba(0,0,0,.55);
+      --radius: 18px;
     }
     *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
     body{
       margin:0;
       font:16px/1.65 system-ui,-apple-system,Segoe UI,Roboto,Arial;
       color:var(--text);
-      background:var(--bg);
+      background:
+        radial-gradient(1200px 600px at 20% -10%, rgba(124,58,237,.35), transparent 55%),
+        radial-gradient(900px 500px at 90% 10%, rgba(34,197,94,.22), transparent 55%),
+        var(--bg);
     }
     a{color:inherit; text-decoration:none}
     .wrap{max-width:var(--max); margin:0 auto; padding:0 18px;}
+    .pill{
+      display:inline-flex; gap:10px; align-items:center;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      color: rgba(255,255,255,.82);
+      backdrop-filter: blur(10px);
+    }
+    .dot{
+      width:8px; height:8px; border-radius:999px;
+      background: linear-gradient(90deg, var(--brand), var(--brand2));
+      box-shadow: 0 0 18px rgba(124,58,237,.55);
+    }
 
-    /* HERO (foto + overlay) */
-    .hero{
-      min-height: 78vh;
+    /* NAV */
+    .nav{
+      position: sticky;
+      top:0;
+      z-index:50;
+      background: rgba(7,10,15,.72);
+      backdrop-filter: blur(12px);
+      border-bottom:1px solid var(--line);
+    }
+    .navRow{
       display:flex;
       align-items:center;
-      justify-content:center;
-      text-align:center;
-      position:relative;
-      background:
-        linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,.68)),
-        url("https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=2200&q=70");
-      background-size:cover;
-      background-position:center;
-    }
-    .heroInner{
-      width:min(980px, 100%);
-      padding: 34px 18px 22px;
-    }
-    .brand{
-      margin:0;
-      font-size: clamp(44px, 6vw, 72px);
-      font-weight: 800;
-      letter-spacing: .3px;
-    }
-    .est{
-      margin: 8px 0 22px;
-      display:inline-flex;
-      flex-direction:column;
-      align-items:center;
-      gap:6px;
-      font-size: 12px;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.85);
-    }
-    .flagline{
-      width:74px; height:3px; border-radius: 999px;
-      background: linear-gradient(90deg, #16a34a, #ffffff, #e11d48);
-    }
-    .welcome{
-      margin: 0 0 22px;
-      font-size: clamp(18px, 2.2vw, 26px);
-      letter-spacing: .14em;
-      text-transform: uppercase;
-    }
-    .ctaRow{
-      display:flex;
-      justify-content:center;
+      justify-content:space-between;
       gap:14px;
-      flex-wrap:wrap;
+      padding: 12px 0;
     }
-    .cta{
+    .logo{
+      display:flex; align-items:center; gap:10px;
+      font-weight: 850;
+      letter-spacing:.2px;
+    }
+    .logoMark{
+      width:34px; height:34px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      box-shadow: 0 18px 40px rgba(0,0,0,.35);
+    }
+    .navLinks{
+      display:flex; gap:18px; flex-wrap:wrap;
+      font-size: 13px;
+      letter-spacing:.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.72);
+    }
+    .navLinks a{padding: 8px 10px; border-radius: 12px;}
+    .navLinks a:hover{background: rgba(255,255,255,.08); color:#fff;}
+    .navCta{
+      display:flex; gap:10px; align-items:center;
+    }
+
+    /* BUTTONS */
+    .btn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
       gap:10px;
-      padding: 14px 28px;
+      padding: 12px 16px;
       border-radius: 999px;
-      font-weight: 700;
-      min-width: 220px;
-      border: 2px solid rgba(255,255,255,.60);
-      background: rgba(255,255,255,.92);
-      color:#111;
-      box-shadow: 0 18px 60px rgba(0,0,0,.45);
-      transition: transform .15s ease;
-    }
-    .cta:hover{transform: translateY(-1px);}
-    .cta.secondary{
+      font-weight: 750;
+      border: 1px solid rgba(255,255,255,.18);
       background: rgba(255,255,255,.08);
       color:#fff;
-      backdrop-filter: blur(8px);
+      transition: transform .15s ease, background .15s ease, border-color .15s ease;
+      white-space:nowrap;
     }
-    .arrow{font-size:18px; opacity:.9}
+    .btn:hover{transform: translateY(-1px); background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.26);}
+    .btn.primary{
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      border-color: transparent;
+      color:#061018;
+      box-shadow: var(--shadow);
+    }
+    .btn.primary:hover{background: linear-gradient(135deg, #8b5cf6, #34d399);}
 
-    /* NAV */
-    .nav{
-      background:#000;
-      border-top: 1px solid rgba(255,255,255,.10);
-      border-bottom: 1px solid rgba(255,255,255,.10);
+    /* HERO */
+    .hero{
+      padding: 68px 0 30px;
     }
-    .navRow{
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 26px;
+      align-items:stretch;
+    }
+    h1{
+      margin: 16px 0 12px;
+      font-size: clamp(34px, 4.8vw, 60px);
+      line-height: 1.05;
+      letter-spacing: -0.5px;
+      font-weight: 900;
+    }
+    .sub{
+      margin:0;
+      color: var(--muted);
+      font-size: clamp(16px, 2vw, 18px);
+      max-width: 56ch;
+    }
+    .heroActions{
+      margin-top: 22px;
       display:flex;
-      justify-content:center;
-      gap:28px;
-      padding: 12px 10px;
-      flex-wrap:wrap;
-      font-size: 13px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.78);
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items:center;
     }
-    .navRow a{padding: 6px 8px; border-radius: 10px;}
-    .navRow a:hover{background: rgba(255,255,255,.08); color:#fff;}
-
-    /* WELCOME SECTION (geen rare blokjes) */
-    .section{
-      background: #1a1a1a;
-      padding: 42px 0;
+    .mini{
+      margin-top: 18px;
+      display:flex; gap:14px; flex-wrap:wrap;
+      color: rgba(255,255,255,.68);
+      font-size: 14px;
     }
-    h2{
-      margin:0 0 18px;
-      font-size: 28px;
-      font-weight: 800;
+    .mini span{
+      display:inline-flex; gap:8px; align-items:center;
     }
-    .twoCols{
+    .check{
+      width:18px; height:18px; border-radius: 6px;
+      background: rgba(34,197,94,.18);
+      border:1px solid rgba(34,197,94,.35);
+      display:grid; place-items:center;
+      font-size: 12px;
+    }
+    .heroCard{
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: 0 20px 70px rgba(0,0,0,.35);
+      display:flex;
+      flex-direction:column;
+      gap: 14px;
+      min-height: 100%;
+    }
+    .heroCardTop{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:10px;
+    }
+    .statTitle{
+      margin:0;
+      font-weight: 850;
+      letter-spacing:.2px;
+    }
+    .statSub{
+      margin:4px 0 0;
+      color: rgba(255,255,255,.68);
+      font-size: 14px;
+    }
+    .statBox{
+      margin-top: 8px;
       display:grid;
       grid-template-columns: 1fr 1fr;
-      gap: 26px;
+      gap: 10px;
+    }
+    .tile{
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.28);
+      border-radius: 14px;
+      padding: 12px;
+    }
+    .tile b{display:block; font-size: 18px}
+    .tile span{color: rgba(255,255,255,.65); font-size: 13px}
+
+    /* SECTIONS */
+    .section{
+      padding: 54px 0;
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+    .sectionHead{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-end;
+      gap: 16px;
+      flex-wrap:wrap;
+      margin-bottom: 18px;
+    }
+    h2{
+      margin:0;
+      font-size: 30px;
+      font-weight: 900;
+      letter-spacing: -0.2px;
+    }
+    .kicker{
+      margin:0;
+      color: rgba(255,255,255,.70);
+      max-width: 70ch;
+    }
+
+    /* CARDS */
+    .grid3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .card{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.05);
+      border-radius: var(--radius);
+      padding: 18px;
+    }
+    .card h3{
+      margin: 0 0 8px;
+      font-size: 18px;
+      font-weight: 900;
+    }
+    .card p{
+      margin:0;
+      color: rgba(255,255,255,.72);
+    }
+    .icon{
+      width:42px; height:42px;
+      border-radius: 14px;
+      display:grid; place-items:center;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, rgba(124,58,237,.35), rgba(34,197,94,.20));
+      border:1px solid rgba(255,255,255,.14);
+    }
+
+    /* PROCESS */
+    .steps{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .stepNum{
+      font-size: 12px;
+      letter-spacing:.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.62);
+      margin-bottom: 8px;
+    }
+
+    /* STORY */
+    .story{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 14px;
       align-items:start;
     }
-    .lead{
-      color: var(--muted);
-      margin:0;
+    .quote{
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.30);
+      border-radius: var(--radius);
+      padding: 18px;
     }
-    .dropcap{
-      float:left;
-      width: 34px; height: 34px;
-      border: 1px solid rgba(255,255,255,.18);
-      border-radius: 6px;
-      display:grid;
-      place-items:center;
-      font-weight: 800;
-      margin: 4px 10px 0 0;
-      color:#fff;
-    }
-    .text{
-      color: var(--muted);
-      margin:0;
-    }
-    .btnBar{
-      margin-top: 18px;
-      display:flex;
-      justify-content:flex-end;
-    }
-    .smallBtn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding: 12px 18px;
-      background:#000;
-      border: 1px solid rgba(255,255,255,.12);
-      color:#fff;
-      font-weight:700;
-      border-radius: 6px;
-    }
-    .smallBtn:hover{background: rgba(255,255,255,.08);}
+    .quote p{margin:0; color: rgba(255,255,255,.74)}
+    .quote b{display:block; margin-top: 10px}
 
-    /* PHOTO STRIP */
-    .strip{
-      background:#0f0f0f;
-      padding: 0;
-    }
-    .stripGrid{
+    /* PRICING */
+    .pricing{
       display:grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap:0;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
     }
-    .ph{
-      aspect-ratio: 16/10;
-      background-size:cover;
-      background-position:center;
-      border-top: 1px solid rgba(255,255,255,.08);
-      border-right: 1px solid rgba(255,255,255,.08);
+    .priceCard{
+      border:1px solid rgba(255,255,255,.14);
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      border-radius: var(--radius);
+      padding: 18px;
+      position:relative;
+      overflow:hidden;
     }
-    .ph:last-child{border-right:0}
+    .badge{
+      position:absolute;
+      top: 14px; right: 14px;
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(124,58,237,.20);
+      border:1px solid rgba(124,58,237,.35);
+      color: rgba(255,255,255,.88);
+    }
+    .priceCard h3{margin:0 0 6px; font-size:18px; font-weight:900}
+    .price{
+      margin: 0 0 10px;
+      font-size: 28px;
+      font-weight: 950;
+      letter-spacing:-0.4px;
+    }
+    .price small{font-size: 14px; color: rgba(255,255,255,.65); font-weight:700}
+    .ul{
+      margin: 0;
+      padding-left: 18px;
+      color: rgba(255,255,255,.74);
+    }
+    .ul li{margin: 8px 0}
+    .priceActions{margin-top: 14px; display:flex; gap:10px; flex-wrap:wrap}
+
+    /* FAQ */
+    details{
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      border-radius: 14px;
+      padding: 14px 16px;
+    }
+    details + details{margin-top: 10px}
+    summary{
+      cursor:pointer;
+      font-weight: 850;
+      list-style:none;
+    }
+    summary::-webkit-details-marker{display:none}
+    details p{margin: 10px 0 0; color: rgba(255,255,255,.74)}
+
+    /* CONTACT */
+    .ctaPanel{
+      border:1px solid rgba(255,255,255,.14);
+      background: linear-gradient(135deg, rgba(124,58,237,.22), rgba(34,197,94,.14));
+      border-radius: calc(var(--radius) + 6px);
+      padding: 22px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap: 16px;
+      flex-wrap:wrap;
+    }
+    .ctaPanel h3{margin:0; font-size: 20px; font-weight: 950}
+    .ctaPanel p{margin:6px 0 0; color: rgba(255,255,255,.78)}
 
     footer{
-      background:#000;
-      border-top: 1px solid rgba(255,255,255,.10);
-      padding: 22px 0;
-      color: rgba(255,255,255,.70);
+      border-top:1px solid rgba(255,255,255,.08);
+      padding: 26px 0;
+      color: rgba(255,255,255,.66);
       font-size: 14px;
     }
     .footRow{
       display:flex;
       justify-content:space-between;
-      gap:12px;
+      align-items:center;
+      gap: 12px;
       flex-wrap:wrap;
     }
 
-    @media (max-width: 900px){
-      .twoCols{grid-template-columns: 1fr;}
-      .btnBar{justify-content:flex-start;}
-      .stripGrid{grid-template-columns: repeat(2,1fr);}
+    @media (max-width: 980px){
+      .heroGrid{grid-template-columns: 1fr;}
+      .story{grid-template-columns: 1fr;}
     }
-    @media (max-width: 520px){
-      .stripGrid{grid-template-columns: 1fr;}
-      .cta{min-width: 190px;}
+    @media (max-width: 900px){
+      .grid3, .steps, .pricing{grid-template-columns: 1fr;}
+      .navLinks{display:none;}
     }
   </style>
 </head>
 
 <body>
+  <!-- NAV -->
+  <div class="nav">
+    <div class="wrap">
+      <div class="navRow">
+        <a class="logo" href="#home" aria-label="Webbo Horeca">
+          <span class="logoMark" aria-hidden="true"></span>
+          <span>Webbo Horeca</span>
+        </a>
+
+        <nav class="navLinks" aria-label="Navigatie">
+          <a href="#voordelen">Voordelen</a>
+          <a href="#proces">Proces</a>
+          <a href="#verhaal">Ons verhaal</a>
+          <a href="#pakketten">Pakketten</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="navCta">
+          <!-- VERVANG: jouw whatsapp / tel / mail -->
+          <a class="btn" href="mailto:info@webbohoreca.nl">Mail</a>
+          <a class="btn primary" href="#contact">Gratis intake</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- HERO -->
   <header class="hero" id="home">
-    <div class="heroInner">
-      <h1 class="brand">Telepizza</h1>
-      <div class="est">
-        <div class="flagline"></div>
-        <div>EST. 1984</div>
-      </div>
+    <div class="wrap">
+      <div class="heroGrid">
+        <div>
+          <span class="pill"><span class="dot"></span> Websites voor horeca die gevonden worden én verkopen</span>
+          <h1>Meer directe bestellingen.<br> Minder gedoe. Geen commissies.</h1>
+          <p class="sub">
+            Webbo Horeca bouwt snelle websites voor horecaondernemers zodat klanten je makkelijker vinden,
+            sneller bestellen en jij meer omzet draait via je eigen kanaal.
+          </p>
 
-      <div class="welcome">BENVENUTO!</div>
+          <div class="heroActions">
+            <!-- VERVANG LINKS -->
+            <a class="btn primary" href="#contact">Plan gratis intake</a>
+            <a class="btn" href="#pakketten">Bekijk pakketten</a>
+            <a class="btn" href="#proces">Hoe werkt het?</a>
+          </div>
 
-      <div class="ctaRow">
-        <!-- Zet hier je echte links -->
-        <a class="cta" href="#bestellen">Online Bestellen <span class="arrow">›</span></a>
-        <a class="cta secondary" href="#reserveren">Reserveren <span class="arrow">›</span></a>
+          <div class="mini">
+            <span><span class="check">✓</span> Snelle oplevering</span>
+            <span><span class="check">✓</span> SEO basis goed geregeld</span>
+            <span><span class="check">✓</span> Focus op conversie</span>
+          </div>
+        </div>
+
+        <aside class="heroCard" aria-label="Resultaat kaart">
+          <div class="heroCardTop">
+            <div>
+              <p class="statTitle">Wat je krijgt</p>
+              <p class="statSub">Een website die is gebouwd voor vindbaarheid & bestellingen.</p>
+            </div>
+            <span class="pill" style="padding:8px 12px; font-size:12px;">Horeca-proof</span>
+          </div>
+
+          <div class="statBox">
+            <div class="tile">
+              <b>Sneller</b>
+              <span>licht & mobiel</span>
+            </div>
+            <div class="tile">
+              <b>Hoger</b>
+              <span>in Google (basis)</span>
+            </div>
+            <div class="tile">
+              <b>Duidelijk</b>
+              <span>menu + CTA’s</span>
+            </div>
+            <div class="tile">
+              <b>Direct</b>
+              <span>bestellen/reserveren</span>
+            </div>
+          </div>
+
+          <div class="card" style="margin-top:6px;">
+            <h3 style="margin:0 0 8px;">Voor wie?</h3>
+            <p style="margin:0; color: rgba(255,255,255,.74);">
+              Restaurants, pizzeria’s, lunchrooms, grillrooms, cafés en cateringbedrijven die online willen groeien
+              zonder gedoe met dure bureaus.
+            </p>
+          </div>
+        </aside>
       </div>
     </div>
   </header>
 
-  <!-- NAV -->
-  <div class="nav">
+  <!-- VOORDELEN -->
+  <section class="section" id="voordelen">
     <div class="wrap">
-      <nav class="navRow" aria-label="Navigatie">
-        <a href="#home">Home</a>
-        <a href="#menu">Menu</a>
-        <a href="#reserveren">Reserveren</a>
-        <a href="#catering">Catering</a>
-        <a href="#over">Over ons</a>
-      </nav>
-    </div>
-  </div>
-
-  <!-- WELCOME TEXT -->
-  <section class="section" id="over">
-    <div class="wrap">
-      <h2>Welkom bij Telepizza</h2>
-
-      <div class="twoCols">
-        <p class="text">
-          <span class="dropcap">T</span>
-          elepizza is sinds 1984 dé pizzeria van Amstelveen. Bij ons draait alles om genieten van authentieke
-          Italiaanse smaken in een warme en gezellige sfeer. Al onze pizza’s, pasta’s en gerechten worden
-          dagelijks bereid met zorgvuldige ingrediënten.
-        </p>
-
+      <div class="sectionHead">
         <div>
-          <p class="lead">
-            Kom langs voor een klassieke pizza, een verse pasta of een gezellig avondje met vrienden en familie.
-            Naast pizza en pasta serveren we ook grillgerechten en antipasti om te delen.
-            Liever thuis genieten? Bestel eenvoudig online of reserveer een tafel.
-          </p>
+          <h2>Meer tijd, meer zichtbaarheid, meer omzet</h2>
+          <p class="kicker">Gebouwd vanuit echte horeca-ervaring: wij weten wat wél werkt (en wat geld kost als het fout gaat).</p>
+        </div>
+      </div>
 
-          <div class="btnBar">
-            <a class="smallBtn" href="#reserveren">Reserveren</a>
+      <div class="grid3">
+        <div class="card">
+          <div class="icon">🔎</div>
+          <h3>Beter vindbaar</h3>
+          <p>We bouwen met een sterke SEO-basis zodat klanten je makkelijker vinden op Google en Maps.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">🛒</div>
+          <h3>Meer directe bestellingen</h3>
+          <p>Duidelijke knoppen, slimme pagina-opbouw en focus op conversie: minder afhaken, meer orders.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">💸</div>
+          <h3>Minder commissies</h3>
+          <p>Stuur klanten naar je eigen website om te bestellen in plaats van via platformen met commissie.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCES -->
+  <section class="section" id="proces">
+    <div class="wrap">
+      <div class="sectionHead">
+        <div>
+          <h2>Zo simpel kan het zijn</h2>
+          <p class="kicker">In 3 stappen van “we moeten iets met een website” naar een site die werkt.</p>
+        </div>
+      </div>
+
+      <div class="steps">
+        <div class="card">
+          <div class="stepNum">Stap 1</div>
+          <h3>Intake + doelen</h3>
+          <p>We bepalen samen wat je nodig hebt: bestellen, reserveren, catering, vindbaarheid en je stijl.</p>
+        </div>
+
+        <div class="card">
+          <div class="stepNum">Stap 2</div>
+          <h3>Design + content</h3>
+          <p>Wij maken het strak en duidelijk. Jij levert menu/foto’s aan (of wij helpen je daarmee).</p>
+        </div>
+
+        <div class="card">
+          <div class="stepNum">Stap 3</div>
+          <h3>Live + verbeteren</h3>
+          <p>We zetten alles live, checken mobiel/desktop, en optimaliseren waar nodig voor meer conversie.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ONS VERHAAL -->
+  <section class="section" id="verhaal">
+    <div class="wrap">
+      <div class="sectionHead">
+        <div>
+          <h2>Ons verhaal</h2>
+          <p class="kicker">Waarom Webbo Horeca bestaat (kort en eerlijk).</p>
+        </div>
+      </div>
+
+      <div class="story">
+        <div class="card">
+          <h3>We liepen tegen precies dezelfde problemen aan</h3>
+          <p>
+            In ons restaurant merkten we dat concurrenten sneller meegingen met de tijd, dat klanten ons online niet goed konden vinden,
+            en dat websites laten maken vaak te duur en te veel gedoe was.
+          </p>
+          <p style="margin-top:10px;">
+            Daarom zijn we zelf gaan bouwen. We maakten fouten, verloren geld en tijd… maar daardoor weten we nu precies wat werkt.
+            Sindsdien zagen we betere cijfers: hogere conversie en betere SEO.
+          </p>
+          <p style="margin-top:10px; color: rgba(255,255,255,.78); font-weight:800;">
+            Kort gezegd: wij zorgen dat horeca sneller gevonden wordt → meer bestellingen → meer via eigen website (minder commissie).
+          </p>
+        </div>
+
+        <div class="quote">
+          <p>
+            “Wij bouwen geen ‘mooie website’ alleen. We bouwen een online verkoopkanaal.
+            Duidelijk menu, snelle site, en knoppen die klanten laten bestellen of reserveren.”
+          </p>
+          <b>— Webbo Horeca</b>
+
+          <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+            <span class="pill"><span class="dot"></span> Horeca-ervaring</span>
+            <span class="pill"><span class="dot"></span> Conversie-focus</span>
+            <span class="pill"><span class="dot"></span> Geen bureau-prijzen</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FOTO STRIP (zet jouw eigen foto's hier) -->
-  <section class="strip" aria-label="Fotogalerij">
-    <div class="stripGrid">
-      <div class="ph" style="background-image:url('https://images.unsplash.com/photo-1590947132387-155cc02f3212?auto=format&fit=crop&w=1200&q=70');"></div>
-      <div class="ph" style="background-image:url('https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?auto=format&fit=crop&w=1200&q=70');"></div>
-      <div class="ph" style="background-image:url('https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=1200&q=70');"></div>
-      <div class="ph" style="background-image:url('https://images.unsplash.com/photo-1542281286-9e0a16bb7366?auto=format&fit=crop&w=1200&q=70');"></div>
+  <!-- PAKKETTEN -->
+  <section class="section" id="pakketten">
+    <div class="wrap">
+      <div class="sectionHead">
+        <div>
+          <h2>Pakketten</h2>
+          <p class="kicker">Prijzen zijn voorbeelden — zet hier jouw echte prijzen of “vanaf”-tarieven.</p>
+        </div>
+      </div>
+
+      <div class="pricing">
+        <div class="priceCard">
+          <h3>Start</h3>
+          <p class="price">€499 <small>eenmalig</small></p>
+          <ul class="ul">
+            <li>1 pagina (landing)</li>
+            <li>Menu/CTA knoppen (bestellen/reserveren)</li>
+            <li>Mobiel geoptimaliseerd</li>
+            <li>Basis SEO (titles/meta)</li>
+          </ul>
+          <div class="priceActions">
+            <a class="btn primary" href="#contact">Kies Start</a>
+            <a class="btn" href="#faq">Vragen?</a>
+          </div>
+        </div>
+
+        <div class="priceCard">
+          <span class="badge">Meest gekozen</span>
+          <h3>Horeca Pro</h3>
+          <p class="price">€899 <small>eenmalig</small></p>
+          <ul class="ul">
+            <li>Tot 5 pagina’s (Home, Menu, Over, Catering, Contact)</li>
+            <li>Snelle performance setup</li>
+            <li>SEO basis + structuur</li>
+            <li>Whatsapp/Bel/Reserveer knoppen</li>
+          </ul>
+          <div class="priceActions">
+            <a class="btn primary" href="#contact">Kies Pro</a>
+            <a class="btn" href="#proces">Proces</a>
+          </div>
+        </div>
+
+        <div class="priceCard">
+          <h3>Groei</h3>
+          <p class="price">€1299 <small>eenmalig</small></p>
+          <ul class="ul">
+            <li>Alles uit Pro</li>
+            <li>Meertaligheid (NL/EN) basis</li>
+            <li>Extra conversie optimalisatie (secties/CTA’s)</li>
+            <li>Maandelijkse kleine updates (optioneel)</li>
+          </ul>
+          <div class="priceActions">
+            <a class="btn primary" href="#contact">Kies Groei</a>
+            <a class="btn" href="#voordelen">Voordelen</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="wrap">
+      <div class="sectionHead">
+        <div>
+          <h2>FAQ</h2>
+          <p class="kicker">De vragen die horecaondernemers ons meestal stellen.</p>
+        </div>
+      </div>
+
+      <details>
+        <summary>Hoe snel kunnen jullie opleveren?</summary>
+        <p>Vaak binnen 3–10 dagen, afhankelijk van hoeveel pagina’s en of foto’s/menu al klaar zijn.</p>
+      </details>
+
+      <details>
+        <summary>Moet ik zelf tekst en foto’s aanleveren?</summary>
+        <p>Mag, maar hoeft niet. Jij levert wat je hebt, wij helpen met structuur en schrijven het professioneel en simpel.</p>
+      </details>
+
+      <details>
+        <summary>Kunnen jullie koppelen met bestellen/reserveren?</summary>
+        <p>Ja. We kunnen knoppen toevoegen naar jouw systeem of een simpele oplossing opzetten (afhankelijk van je wensen).</p>
+      </details>
+
+      <details>
+        <summary>Werkt dit ook als ik al op Thuisbezorgd sta?</summary>
+        <p>Juist. Je gebruikt je eigen website om klanten direct naar jouw kanaal te sturen, zodat je minder commissie betaalt.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact">
+    <div class="wrap">
+      <div class="ctaPanel">
+        <div>
+          <h3>Gratis intake (15 min) — dan weet je meteen wat mogelijk is</h3>
+          <p>Stuur je bedrijfsnaam + wat je wilt (bestellen/reserveren/catering). Wij reageren snel.</p>
+        </div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <!-- VERVANG: jouw gegevens -->
+          <a class="btn" href="tel:+31600000000">Bel</a>
+          <a class="btn" href="mailto:info@webbohoreca.nl">Mail</a>
+          <a class="btn primary" href="https://wa.me/31600000000">WhatsApp</a>
+        </div>
+      </div>
+
+      <p style="margin:14px 0 0; color: rgba(255,255,255,.60); font-size: 13px;">
+        Tip: zet hier later ook een simpel contactformulier (kan ik ook voor je maken), maar WhatsApp converteert vaak het best in horeca.
+      </p>
     </div>
   </section>
 
   <footer>
     <div class="wrap">
       <div class="footRow">
-        <div>© <span id="y"></span> Telepizza Amstelveen</div>
-        <div>Online bestellen • Reserveren • Catering</div>
+        <div>© <span id="y"></span> Webbo Horeca</div>
+        <div>
+          <a href="#home">Home</a> •
+          <a href="#pakketten">Pakketten</a> •
+          <a href="#contact">Contact</a>
+        </div>
       </div>
     </div>
   </footer>

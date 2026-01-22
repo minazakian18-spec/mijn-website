@@ -3,35 +3,33 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Webbo Horeca — Websites die verkopen</title>
+  <title>Webbo Horeca — Websites die gevonden worden & verkopen</title>
   <meta name="description" content="Webbo Horeca bouwt snelle websites voor horeca: beter vindbaar, hogere conversie en meer directe bestellingen zonder commissies." />
 
-  <!-- Font (Soorce-achtige vibe) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
-    /* =========================
-       THEME — VUL HIER SOORCE IN
-       =========================
-       1) Open https://www.soorce.nl/
-       2) Rechtermuisklik > Inspect
-       3) Klik op een knop/gradient/achtergrond
-       4) In "Computed" zie je de echte kleur (hex/rgb)
-       5) Plak hier: exact dezelfde waardes
-    */
     :root{
-      --bg: #ffffff;           /* Soorce background */
-      --text: #0b0f19;         /* Soorce heading/text */
-      --muted: #4b5563;        /* Soorce muted text */
-      --border: #e5e7eb;       /* Soorce borders */
-      --brand: #2563eb;        /* Soorce primary (buttons/links) */
-      --brand-2: #60a5fa;      /* Soorce accent/gradient */
+      /* Soorce-achtige kleuren (op basis van jouw screenshots/PDF) */
+      --purple:#2B1550;
+      --mint:#16D6B4;
+      --mint2:#11C9AB;
+      --text:#2B1550;
+      --muted:#7A74A4;
 
-      --max: 1120px;
-      --radius: 18px;
-      --shadow: 0 18px 50px rgba(11,15,25,.10);
+      --bg1:#FAF4FF;
+      --bg2:#F7F3FF;
+      --bg3:#EEF7FF;
+
+      --card:#ffffff;
+      --shadow: 0 18px 60px rgba(43,21,80,.12);
+      --shadow2: 0 10px 30px rgba(43,21,80,.10);
+      --radius:24px;
+
+      --max:1180px;
+      --pad:22px;
     }
 
     *{box-sizing:border-box}
@@ -40,309 +38,536 @@
       margin:0;
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial;
       color:var(--text);
-      background:var(--bg);
-      line-height:1.6;
+      background:
+        radial-gradient(900px 600px at 65% 5%, rgba(177,122,255,.18), transparent 60%),
+        radial-gradient(900px 600px at 95% 45%, rgba(152,214,255,.24), transparent 62%),
+        radial-gradient(900px 600px at 25% 55%, rgba(255,191,233,.18), transparent 60%),
+        linear-gradient(180deg, var(--bg1), var(--bg2) 45%, var(--bg3));
     }
     a{color:inherit; text-decoration:none}
     .wrap{max-width:var(--max); margin:0 auto; padding:0 20px;}
 
     /* NAV */
     .nav{
-      position: sticky;
+      position:sticky;
       top:0;
-      z-index: 50;
-      background: rgba(255,255,255,.86);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
+      z-index:50;
+      background: rgba(255,255,255,.78);
+      backdrop-filter: blur(12px);
+      border-bottom:1px solid rgba(43,21,80,.06);
     }
     .navRow{
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:14px;
-      padding: 14px 0;
+      padding: 18px 0;
     }
-    .brand{
+    .logo{
       display:flex;
       align-items:center;
       gap:10px;
       font-weight: 900;
-      letter-spacing:-0.02em;
+      letter-spacing:-0.03em;
+      font-size: 34px;
+      line-height:1;
     }
-    .mark{
-      width: 36px;
-      height: 36px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+    .dot{
+      width:10px; height:10px;
+      border-radius:99px;
+      background: var(--mint);
+      display:inline-block;
+      transform: translateY(10px);
     }
     .links{
       display:flex;
-      align-items:center;
-      gap: 18px;
-      flex-wrap:wrap;
+      gap: 22px;
       font-weight:600;
-      font-size: 14px;
-      color: rgba(11,15,25,.72);
+      color: rgba(43,21,80,.82);
+      align-items:center;
+      flex-wrap:wrap;
     }
-    .links a{
-      padding: 8px 10px;
-      border-radius: 12px;
+    .links a{padding: 10px 10px; border-radius: 14px;}
+    .links a:hover{background: rgba(43,21,80,.05);}
+    .navRight{
+      display:flex;
+      gap:12px;
+      align-items:center;
     }
-    .links a:hover{background:#f3f4f6; color: var(--text);}
-
-    /* BUTTONS */
+    .login{
+      font-weight:700;
+      color: var(--mint2);
+      padding:10px 10px;
+      border-radius: 14px;
+    }
+    .login:hover{background: rgba(22,214,180,.10);}
     .btn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      gap:10px;
-      padding: 12px 16px;
+      padding: 14px 18px;
       border-radius: 999px;
-      font-weight: 700;
-      border: 1px solid var(--border);
-      background:#fff;
-      color: var(--text);
-      transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+      font-weight: 800;
+      border: 0;
+      cursor:pointer;
       white-space:nowrap;
     }
-    .btn:hover{transform: translateY(-1px); box-shadow: 0 10px 26px rgba(11,15,25,.10);}
-    .btn.primary{
-      border: none;
-      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+    .btnMint{
+      background: linear-gradient(135deg, var(--mint), var(--mint2));
       color:#fff;
+      box-shadow: 0 16px 40px rgba(22,214,180,.22);
     }
-    .btn.ghost{
-      background: transparent;
+    .btnMint:hover{filter: brightness(0.98)}
+    .btnGhost{
+      background: rgba(255,255,255,.65);
+      color: var(--purple);
+      border: 1px solid rgba(43,21,80,.08);
     }
+    .btnGhost:hover{background:#fff;}
 
     /* HERO */
     .hero{
-      padding: 62px 0 30px;
+      padding: 74px 0 26px;
+      position:relative;
+      overflow:hidden;
     }
     .heroGrid{
       display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 26px;
-      align-items:stretch;
-    }
-    .pill{
-      display:inline-flex;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 34px;
       align-items:center;
-      gap:10px;
-      padding: 10px 14px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: #f9fafb;
-      font-size: 13px;
-      font-weight: 600;
-      color: rgba(11,15,25,.70);
-      width: fit-content;
-    }
-    .dot{
-      width:9px; height:9px; border-radius:999px;
-      background: linear-gradient(135deg, var(--brand), var(--brand-2));
     }
     h1{
-      margin: 14px 0 12px;
-      font-size: clamp(34px, 4.4vw, 56px);
-      line-height:1.05;
-      letter-spacing: -0.04em;
+      margin:0 0 16px;
+      font-size: clamp(44px, 5.2vw, 76px);
       font-weight: 900;
+      letter-spacing: -0.05em;
+      line-height: 1.02;
     }
     .sub{
       margin:0;
-      color: rgba(11,15,25,.72);
-      font-size: 17px;
-      max-width: 60ch;
+      color: rgba(43,21,80,.62);
+      font-size: 18px;
+      line-height:1.65;
+      max-width: 54ch;
     }
-    .heroActions{
-      margin-top: 18px;
-      display:flex;
-      gap: 12px;
-      flex-wrap:wrap;
-      align-items:center;
-    }
-    .micro{
-      margin-top: 14px;
-      display:flex;
-      flex-wrap:wrap;
-      gap: 12px;
-      color: rgba(11,15,25,.62);
-      font-size: 14px;
-      font-weight: 600;
-    }
-    .micro span{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-    }
-    .tick{
-      width: 18px; height: 18px;
-      border-radius: 6px;
-      background: rgba(37,99,235,.12);
-      border: 1px solid rgba(37,99,235,.22);
-      display:grid;
-      place-items:center;
-      font-size: 12px;
-      color: var(--brand);
-    }
-
-    /* HERO CARD */
-    .card{
-      border: 1px solid var(--border);
-      background:#fff;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
-    .heroCard{
-      padding: 18px;
+    .heroBadges{
+      margin-top: 26px;
       display:flex;
       flex-direction:column;
-      gap: 12px;
+      gap:14px;
     }
-    .heroCard h3{
-      margin:0;
-      font-size: 16px;
-      letter-spacing: -0.01em;
-    }
-    .heroCard p{
-      margin: 6px 0 0;
-      color: rgba(11,15,25,.68);
-      font-size: 14px;
-    }
-    .tiles{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-top: 6px;
-    }
-    .tile{
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 12px;
-      background: #fbfbfc;
-    }
-    .tile b{display:block; font-size: 16px}
-    .tile span{display:block; margin-top:4px; font-size: 13px; color: rgba(11,15,25,.62)}
-
-    /* SECTIONS */
-    .section{
-      padding: 56px 0;
-      border-top: 1px solid var(--border);
-    }
-    .head{
+    .checkline{
       display:flex;
-      justify-content:space-between;
-      gap: 16px;
+      gap:14px;
+      align-items:center;
+      font-weight:600;
+      color: rgba(43,21,80,.82);
+      font-size: 18px;
+    }
+    .check{
+      width: 26px; height: 26px;
+      border-radius: 999px;
+      display:grid;
+      place-items:center;
+      background: rgba(22,214,180,.18);
+      color: var(--mint2);
+      font-weight: 900;
+    }
+
+    /* Right mock cards */
+    .stack{
+      position:relative;
+      min-height: 420px;
+    }
+    .bubble{
+      position:absolute;
+      left:0;
+      right:0;
+      margin:auto;
+      width:min(420px, 100%);
+      background: rgba(255,255,255,.78);
+      border: 1px solid rgba(43,21,80,.08);
+      box-shadow: var(--shadow2);
+      border-radius: 16px;
+      padding: 16px 18px;
+      display:flex;
+      gap:12px;
+      align-items:center;
+      backdrop-filter: blur(12px);
+    }
+    .bubble:nth-child(1){top: 26px;}
+    .bubble:nth-child(2){top: 118px; width:min(390px, 100%);}
+    .bubble:nth-child(3){top: 210px; width:min(410px, 100%);}
+
+    .bar{
+      width: 5px;
+      height: 44px;
+      border-radius: 99px;
+    }
+    .bar.orange{background:#FFB84D;}
+    .bar.pink{background:#FF6FA3;}
+    .bar.blue{background:#6EA7FF;}
+
+    .bTitle{font-weight:900; font-size: 18px; margin:0}
+    .bText{margin:4px 0 0; color: rgba(43,21,80,.62); font-weight:600}
+    .heroCtas{
+      margin-top: 26px;
+      display:flex;
+      gap:16px;
       flex-wrap:wrap;
-      align-items:flex-end;
-      margin-bottom: 18px;
+      align-items:center;
+    }
+
+    /* Wave line */
+    .wave{
+      position:absolute;
+      left:-160px;
+      top: 350px;
+      width: 760px;
+      height: 260px;
+      opacity:.85;
+      pointer-events:none;
+    }
+
+    /* SECTION base */
+    .section{
+      padding: 90px 0;
+    }
+    .center{
+      text-align:center;
+    }
+    .eyebrow{
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      color: rgba(43,21,80,.45);
+      font-weight:700;
+      font-size: 14px;
+      margin:0 0 18px;
     }
     h2{
       margin:0;
-      font-size: 30px;
-      letter-spacing: -0.03em;
+      font-size: clamp(36px, 4.4vw, 64px);
       font-weight: 900;
-    }
-    .kicker{
-      margin: 0;
-      color: rgba(11,15,25,.68);
-      max-width: 75ch;
-      font-weight: 600;
+      letter-spacing:-0.05em;
+      line-height: 1.05;
     }
 
-    .grid3{
+    /* Logo row */
+    .logos{
+      margin-top: 40px;
+      display:flex;
+      gap: 44px;
+      justify-content:center;
+      align-items:center;
+      flex-wrap:wrap;
+      color: rgba(43,21,80,.70);
+      font-weight:800;
+      font-size: 18px;
+    }
+    .logoChip{
+      opacity:.85;
+      padding: 10px 14px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.40);
+      border: 1px solid rgba(43,21,80,.06);
+    }
+
+    /* Cards grid (Voordelen) */
+    .cards{
+      margin-top: 58px;
       display:grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .card{
+      background: var(--card);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 28px 26px;
+      min-height: 360px;
+      display:flex;
+      flex-direction:column;
       gap: 14px;
     }
-    .miniCard{
-      padding: 18px;
-      border-radius: var(--radius);
-      border: 1px solid var(--border);
-      background:#fff;
+    .iconBubble{
+      width: 74px;
+      height: 74px;
+      border-radius: 22px;
+      display:grid;
+      place-items:center;
+      font-size: 30px;
+      border: 1px solid rgba(43,21,80,.06);
     }
-    .miniCard h3{margin: 10px 0 8px; font-size: 17px; letter-spacing:-0.02em;}
-    .miniCard p{margin:0; color: rgba(11,15,25,.68); font-weight: 500;}
-    .ic{
-      width: 42px; height: 42px;
-      border-radius: 14px;
-      display:grid; place-items:center;
-      background: rgba(37,99,235,.10);
-      border: 1px solid rgba(37,99,235,.18);
-      color: var(--brand);
-      font-weight: 900;
+    .ib1{background: rgba(255,205,125,.24);}
+    .ib2{background: rgba(255,160,196,.22);}
+    .ib3{background: rgba(167,205,255,.24);}
+    .ib4{background: rgba(255,220,160,.22);}
+
+    .card h3{
+      margin: 8px 0 0;
+      font-size: 26px;
+      letter-spacing:-0.03em;
+      font-weight:900;
+    }
+    .card p{
+      margin:0;
+      color: rgba(43,21,80,.60);
+      font-size: 16px;
+      line-height:1.7;
+      font-weight:600;
     }
 
-    /* PROCESS */
-    .steps{display:grid; grid-template-columns: repeat(3,1fr); gap:14px;}
-    .stepTop{
-      display:flex; justify-content:space-between; align-items:center;
-      gap: 10px;
-    }
-    .stepNum{
-      font-size: 12px;
-      font-weight: 800;
-      color: rgba(11,15,25,.55);
-      letter-spacing: .14em;
-      text-transform: uppercase;
-    }
-
-    /* PRICING */
-    .pricing{display:grid; grid-template-columns: repeat(3,1fr); gap:14px;}
-    .priceCard{padding: 18px;}
-    .price{
-      margin: 8px 0 10px;
-      font-size: 28px;
-      font-weight: 900;
-      letter-spacing: -0.03em;
-    }
-    .price small{font-size: 13px; font-weight:700; color: rgba(11,15,25,.55)}
-    .ul{margin:0; padding-left: 18px; color: rgba(11,15,25,.68); font-weight: 500;}
-    .ul li{margin: 8px 0}
-
-    /* FAQ */
-    details{
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 14px 16px;
-      background:#fff;
-    }
-    details + details{margin-top: 10px}
-    summary{cursor:pointer; font-weight: 800; letter-spacing: -0.01em;}
-    summary::-webkit-details-marker{display:none}
-    details p{margin: 10px 0 0; color: rgba(11,15,25,.68); font-weight: 500;}
-
-    /* CTA PANEL */
-    .cta{
-      border-radius: calc(var(--radius) + 4px);
-      border: 1px solid var(--border);
-      background: linear-gradient(135deg, rgba(37,99,235,.10), rgba(96,165,250,.10));
-      padding: 22px;
-      display:flex;
-      justify-content:space-between;
+    /* Process section */
+    .processGrid{
+      margin-top: 64px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
       align-items:center;
-      gap: 16px;
-      flex-wrap:wrap;
     }
-    .cta h3{margin:0; font-size: 18px; font-weight: 900; letter-spacing:-0.02em;}
-    .cta p{margin:6px 0 0; color: rgba(11,15,25,.68); font-weight: 600;}
+    .mock{
+      background: rgba(255,255,255,.65);
+      border: 1px solid rgba(43,21,80,.08);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      padding: 18px;
+      position:relative;
+      overflow:hidden;
+    }
+    .mockTop{
+      height: 18px;
+      border-radius: 12px;
+      background: var(--purple);
+      opacity:.95;
+      margin-bottom: 16px;
+    }
+    .mockRow{
+      display:flex;
+      gap: 12px;
+      align-items:center;
+      padding: 12px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.88);
+      border: 1px solid rgba(43,21,80,.06);
+      box-shadow: 0 10px 28px rgba(43,21,80,.10);
+      margin-bottom: 12px;
+    }
+    .avatar{
+      width: 44px; height:44px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(22,214,180,.25), rgba(177,122,255,.20));
+      border: 1px solid rgba(43,21,80,.06);
+    }
+    .name{font-weight:900}
+    .meta{color: rgba(43,21,80,.55); font-weight:700; font-size: 13px; margin-top:2px}
+    .score{
+      margin-left:auto;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:900;
+      color: var(--mint2);
+    }
+    .barline{
+      width: 140px; height: 10px;
+      border-radius: 999px;
+      background: rgba(43,21,80,.10);
+      overflow:hidden;
+    }
+    .barfill{
+      height:100%;
+      width: 78%;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--mint), var(--mint2));
+    }
+    .procTitle{
+      margin:0 0 12px;
+      font-size: 52px;
+      font-weight: 900;
+      letter-spacing:-0.05em;
+      line-height:1.05;
+    }
+    .procText{
+      margin:0;
+      color: rgba(43,21,80,.60);
+      font-weight:600;
+      font-size: 18px;
+      line-height:1.75;
+      max-width: 58ch;
+    }
+
+    /* Testimonials */
+    .testiLead{
+      margin: 26px auto 0;
+      max-width: 80ch;
+      color: rgba(43,21,80,.72);
+      font-weight:600;
+      font-size: 22px;
+      line-height:1.6;
+    }
+    .testiGrid{
+      margin-top: 56px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      align-items:stretch;
+    }
+    .quote{
+      background: rgba(255,255,255,.75);
+      border: 1px solid rgba(43,21,80,.08);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 34px;
+      position:relative;
+      overflow:hidden;
+      min-height: 240px;
+    }
+    .quote p{
+      margin:0;
+      color: rgba(43,21,80,.60);
+      font-style: italic;
+      font-weight:600;
+      font-size: 18px;
+      line-height:1.75;
+    }
+    .who{
+      margin-top: 22px;
+      display:flex;
+      gap: 14px;
+      align-items:center;
+    }
+    .brandCircle{
+      width: 54px; height: 54px;
+      border-radius: 999px;
+      background: rgba(255,205,125,.35);
+      display:grid;
+      place-items:center;
+      font-weight:900;
+      color: rgba(43,21,80,.85);
+    }
+    .who b{display:block; font-size: 22px; letter-spacing:-0.03em}
+    .who span{display:block; color: rgba(43,21,80,.55); font-weight:700; margin-top:2px}
+    .qmark{
+      position:absolute;
+      right: 24px;
+      bottom: 22px;
+      font-size: 64px;
+      color: rgba(43,21,80,.18);
+      font-weight:900;
+    }
+
+    /* Cases */
+    .casesGrid{
+      margin-top: 54px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+    .case{
+      background: rgba(255,255,255,.70);
+      border: 1px solid rgba(43,21,80,.08);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .caseImg{
+      height: 260px;
+      background-size: cover;
+      background-position:center;
+    }
+    .caseBody{padding: 22px 24px 26px;}
+    .caseTitle{
+      margin: 0 0 10px;
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing:-0.03em;
+      line-height:1.2;
+    }
+    .caseMeta{
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+      color: rgba(43,21,80,.55);
+      font-weight:700;
+      margin-top: 10px;
+    }
+    .caseLink{
+      margin-top: 10px;
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      color: var(--mint2);
+      font-weight:900;
+    }
+
+    /* CTA form */
+    .ctaBox{
+      margin-top: 58px;
+      background: rgba(255,255,255,.74);
+      border: 1px solid rgba(43,21,80,.08);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 26px;
+      max-width: 980px;
+      margin-left:auto;
+      margin-right:auto;
+    }
+    .form{
+      margin-top: 18px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .input{
+      width:100%;
+      padding: 14px 14px;
+      border-radius: 16px;
+      border: 1px solid rgba(43,21,80,.10);
+      background: rgba(255,255,255,.95);
+      font-weight:600;
+      outline:none;
+      color: var(--purple);
+    }
+    .input:focus{border-color: rgba(22,214,180,.55); box-shadow: 0 0 0 4px rgba(22,214,180,.15);}
+    .full{grid-column: 1 / -1;}
+    textarea.input{min-height: 120px; resize: vertical;}
+    .formActions{
+      grid-column: 1 / -1;
+      display:flex;
+      gap: 12px;
+      flex-wrap:wrap;
+      align-items:center;
+      margin-top: 6px;
+    }
 
     footer{
-      border-top: 1px solid var(--border);
-      padding: 26px 0;
-      color: rgba(11,15,25,.62);
-      font-weight: 600;
-      font-size: 14px;
+      padding: 40px 0 70px;
+      color: rgba(43,21,80,.55);
+      font-weight:700;
     }
-    .footRow{display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;}
+    .footRow{
+      display:flex;
+      justify-content:space-between;
+      gap: 14px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
 
+    /* Responsive */
     @media (max-width: 980px){
-      .heroGrid{grid-template-columns: 1fr;}
+      .heroGrid{grid-template-columns: 1fr; gap: 26px;}
+      .stack{min-height: 320px;}
+      .cards{grid-template-columns: 1fr 1fr;}
+      .processGrid{grid-template-columns: 1fr;}
+      .testiGrid{grid-template-columns: 1fr;}
+      .casesGrid{grid-template-columns: 1fr;}
+      .form{grid-template-columns: 1fr;}
     }
-    @media (max-width: 900px){
-      .grid3,.steps,.pricing{grid-template-columns: 1fr;}
+    @media (max-width: 720px){
       .links{display:none;}
+      .logo{font-size: 30px;}
+      .cards{grid-template-columns: 1fr;}
     }
   </style>
 </head>
@@ -353,24 +578,21 @@
   <div class="nav">
     <div class="wrap">
       <div class="navRow">
-        <a class="brand" href="#home" aria-label="Webbo Horeca">
-          <span class="mark" aria-hidden="true"></span>
-          <span>Webbo Horeca</span>
+        <a class="logo" href="#home" aria-label="Webbo Horeca">
+          webbo<span class="dot" aria-hidden="true"></span>
         </a>
 
         <nav class="links" aria-label="Navigatie">
-          <a href="#voordelen">Voordelen</a>
-          <a href="#proces">Proces</a>
-          <a href="#verhaal">Ons verhaal</a>
-          <a href="#pakketten">Pakketten</a>
-          <a href="#faq">FAQ</a>
+          <a href="#hoe">Hoe werkt het</a>
+          <a href="#voorwie">Voor wie</a>
+          <a href="#over">Over ons</a>
+          <a href="#cases">Cases</a>
           <a href="#contact">Contact</a>
         </nav>
 
-        <!-- VERVANG CONTACT -->
-        <div style="display:flex; gap:10px; align-items:center;">
-          <a class="btn ghost" href="mailto:info@webbohoreca.nl">Mail</a>
-          <a class="btn primary" href="#contact">Plan gratis intake</a>
+        <div class="navRight">
+          <a class="login" href="#contact">Login</a>
+          <a class="btn btnMint" href="#contact">Plan een demo</a>
         </div>
       </div>
     </div>
@@ -378,268 +600,298 @@
 
   <!-- HERO -->
   <header class="hero" id="home">
+    <svg class="wave" viewBox="0 0 800 300" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M10 40C160 20 220 210 360 200C500 190 520 60 700 110C820 145 870 240 980 260"
+            stroke="url(#g)" stroke-width="8" stroke-linecap="round" opacity=".75"/>
+      <defs>
+        <linearGradient id="g" x1="0" y1="0" x2="800" y2="0">
+          <stop stop-color="#9C7CFF"/>
+          <stop offset="0.55" stop-color="#FFB1D9"/>
+          <stop offset="1" stop-color="#8EDBFF"/>
+        </linearGradient>
+      </defs>
+    </svg>
+
     <div class="wrap">
       <div class="heroGrid">
         <div>
-          <div class="pill"><span class="dot"></span> Websites voor horeca die gevonden worden én verkopen</div>
-          <h1>Meer directe bestellingen.<br> Minder commissie. Meer winst.</h1>
+          <h1>Direct meer<br>online bestellingen</h1>
           <p class="sub">
+            Zonder dure bureaus. Zonder gedoe.
             Webbo Horeca bouwt snelle websites voor horecaondernemers zodat klanten je makkelijker vinden,
-            sneller bestellen en jij groeit via je eigen kanaal.
+            sneller bestellen en jij minder commissie betaalt via platforms.
           </p>
 
-          <div class="heroActions">
-            <a class="btn primary" href="#contact">Plan gratis intake</a>
-            <a class="btn" href="#pakketten">Bekijk pakketten</a>
-            <a class="btn" href="#proces">Hoe werkt het?</a>
+          <div class="heroBadges">
+            <div class="checkline"><span class="check">✓</span> Beter vindbaar (SEO-basis)</div>
+            <div class="checkline"><span class="check">✓</span> Meer conversie (duidelijke knoppen & flow)</div>
+            <div class="checkline"><span class="check">✓</span> Snelle website (mobiel eerst)</div>
+            <div class="checkline"><span class="check">✓</span> Persoonlijke begeleiding</div>
           </div>
 
-          <div class="micro">
-            <span><span class="tick">✓</span> SEO basis goed</span>
-            <span><span class="tick">✓</span> Conversie-setup</span>
-            <span><span class="tick">✓</span> Snel & mobiel</span>
+          <div class="heroCtas">
+            <a class="btn btnMint" href="#contact">Plan een demo</a>
+            <a class="btn btnGhost" href="#hoe">Hoe werkt het?</a>
           </div>
         </div>
 
-        <aside class="card heroCard">
-          <div>
-            <h3>Wat je krijgt</h3>
-            <p>
-              Een website die is gebouwd als verkoopkanaal: helder menu, duidelijke knoppen
-              (bestellen/reserveren) en een sterke basis voor vindbaarheid.
-            </p>
+        <div class="stack" aria-label="Resultaat kaartjes">
+          <div class="bubble">
+            <div class="bar orange"></div>
+            <div>
+              <p class="bTitle">Meer directe bestellingen</p>
+              <p class="bText">Van “kijken” naar “bestellen”</p>
+            </div>
           </div>
-
-          <div class="tiles">
-            <div class="tile"><b>Sneller</b><span>licht & mobiel</span></div>
-            <div class="tile"><b>Duidelijk</b><span>CTA’s die werken</span></div>
-            <div class="tile"><b>Vindbaar</b><span>SEO structuur</span></div>
-            <div class="tile"><b>Direct</b><span>bestellen/reserveren</span></div>
+          <div class="bubble">
+            <div class="bar pink"></div>
+            <div>
+              <p class="bTitle">Hoger in Google</p>
+              <p class="bText">Betere vindbaarheid voor jouw stad</p>
+            </div>
           </div>
-
-          <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:6px;">
-            <a class="btn primary" href="#contact" style="width:100%;">Start met gratis intake</a>
-            <a class="btn" href="#verhaal" style="width:100%;">Waarom Webbo Horeca?</a>
+          <div class="bubble">
+            <div class="bar blue"></div>
+            <div>
+              <p class="bTitle">Snelle laadtijd</p>
+              <p class="bText">Mobiel first = minder afhakers</p>
+            </div>
           </div>
-        </aside>
+        </div>
       </div>
     </div>
   </header>
 
-  <!-- VOORDELEN -->
-  <section class="section" id="voordelen">
+  <!-- “LOGOS” / TRUST -->
+  <section class="section center" id="voorwie" style="padding-top:52px;">
     <div class="wrap">
-      <div class="head">
-        <div>
-          <h2>Meer tijd, meer zichtbaarheid, meer omzet</h2>
-          <p class="kicker">
-            Gebouwd vanuit echte horeca-ervaring: wij weten wat wél werkt (en wat geld kost als het fout gaat).
-          </p>
-        </div>
-      </div>
+      <p class="testiLead" style="margin-top:0;">
+        Voor horeca die online wil groeien: restaurants, pizzeria’s, grillrooms, lunchrooms, cafés en catering.
+      </p>
 
-      <div class="grid3">
-        <div class="miniCard">
-          <div class="ic">🔎</div>
-          <h3>Beter vindbaar</h3>
-          <p>SEO-basis die klopt: structuur, pagina’s en content zodat klanten je sneller vinden.</p>
-        </div>
-        <div class="miniCard">
-          <div class="ic">🛒</div>
-          <h3>Meer directe bestellingen</h3>
-          <p>Duidelijke knoppen en slimme opbouw voor minder afhaken en meer orders.</p>
-        </div>
-        <div class="miniCard">
-          <div class="ic">💸</div>
-          <h3>Minder commissies</h3>
-          <p>Stuur klanten naar je eigen kanaal in plaats van platforms met hoge commissie.</p>
-        </div>
+      <div class="logos" aria-label="Voorbeelden">
+        <span class="logoChip">Restaurant</span>
+        <span class="logoChip">Pizzeria</span>
+        <span class="logoChip">Grillroom</span>
+        <span class="logoChip">Lunchroom</span>
+        <span class="logoChip">Catering</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- VOORDELEN -->
+  <section class="section center" id="over">
+    <div class="wrap">
+      <p class="eyebrow">VOORDELEN</p>
+      <h2>Meer tijd, meer<br>bestellingen, meer resultaat</h2>
+
+      <div class="cards">
+        <article class="card">
+          <div class="iconBubble ib1">⭐</div>
+          <h3>Unieke strategie</h3>
+          <p>
+            We bouwen jouw website met een duidelijke structuur: wat ziet de klant eerst, waar klikt hij,
+            en hoe maken we “bestellen/reserveren” super makkelijk.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="iconBubble ib2">💬</div>
+          <h3>Slimme benadering</h3>
+          <p>
+            Teksten die echt werken voor horeca: kort, duidelijk, vertrouwd.
+            Minder uitleg, meer actie (en meer orders).
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="iconBubble ib3">📊</div>
+          <h3>Overzichtelijk</h3>
+          <p>
+            Alles logisch ingericht: menu, openingstijden, locatie, reviews, catering.
+            Klanten vinden sneller wat ze zoeken.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="iconBubble ib4">🤝</div>
+          <h3>Persoonlijk</h3>
+          <p>
+            Geen groot bureau. Je schakelt direct met ons.
+            We bouwen snel, verbeteren slim en blijven bereikbaar.
+          </p>
+        </article>
       </div>
     </div>
   </section>
 
   <!-- PROCES -->
-  <section class="section" id="proces">
-    <div class="wrap">
-      <div class="head">
-        <div>
-          <h2>Zo simpel kan het zijn</h2>
-          <p class="kicker">In 3 stappen van idee naar een website die echt iets oplevert.</p>
-        </div>
-      </div>
+  <section class="section" id="hoe">
+    <div class="wrap center">
+      <p class="eyebrow">PROCES</p>
+      <h2>Zo simpel kan<br>online groeien zijn</h2>
 
-      <div class="steps">
-        <div class="miniCard">
-          <div class="stepTop">
-            <div class="stepNum">Stap 1</div>
-            <div class="pill" style="padding:8px 12px;">Intake</div>
+      <div class="processGrid">
+        <div class="mock" aria-label="Mock dashboard">
+          <div class="mockTop"></div>
+
+          <div class="mockRow">
+            <div class="avatar"></div>
+            <div>
+              <div class="name">Menu pagina</div>
+              <div class="meta">CTA: Bestellen • Reserveren</div>
+            </div>
+            <div class="score">
+              100%
+              <div class="barline"><div class="barfill" style="width:92%"></div></div>
+            </div>
           </div>
-          <h3>Doelen + structuur</h3>
-          <p>We bepalen samen wat je nodig hebt: bestellen, reserveren, catering en je stijl.</p>
+
+          <div class="mockRow">
+            <div class="avatar"></div>
+            <div>
+              <div class="name">Google vindbaarheid</div>
+              <div class="meta">SEO structuur klaar</div>
+            </div>
+            <div class="score">
+              89%
+              <div class="barline"><div class="barfill" style="width:78%"></div></div>
+            </div>
+          </div>
+
+          <div class="mockRow" style="margin-bottom:0;">
+            <div class="avatar"></div>
+            <div>
+              <div class="name">Snelheid mobiel</div>
+              <div class="meta">Minder afhakers</div>
+            </div>
+            <div class="score">
+              74%
+              <div class="barline"><div class="barfill" style="width:66%"></div></div>
+            </div>
+          </div>
         </div>
 
-        <div class="miniCard">
-          <div class="stepTop">
-            <div class="stepNum">Stap 2</div>
-            <div class="pill" style="padding:8px 12px;">Bouwen</div>
+        <div style="text-align:left;">
+          <p class="procTitle">Oplevering</p>
+          <p class="procText">
+            We starten met een korte intake, bouwen jouw pagina’s, zetten alles live en verbeteren op basis van
+            wat klanten doen. Doel: sneller bestellen, minder afhaken en meer omzet via jouw eigen website.
+          </p>
+          <div class="heroCtas" style="margin-top:22px;">
+            <a class="btn btnMint" href="#contact">Plan een demo</a>
+            <a class="btn btnGhost" href="#cases">Bekijk cases</a>
           </div>
-          <h3>Design + content</h3>
-          <p>Wij maken het strak en duidelijk. Jij levert menu/foto’s aan (of wij helpen).</p>
-        </div>
-
-        <div class="miniCard">
-          <div class="stepTop">
-            <div class="stepNum">Stap 3</div>
-            <div class="pill" style="padding:8px 12px;">Live</div>
-          </div>
-          <h3>Oplevering + optimalisatie</h3>
-          <p>Alles gaat live, we checken mobiel/desktop en verbeteren voor conversie.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- VERHAAL -->
-  <section class="section" id="verhaal">
+  <!-- TESTIMONIALS -->
+  <section class="section center" id="testimonials">
     <div class="wrap">
-      <div class="head">
-        <div>
-          <h2>Ons verhaal</h2>
-          <p class="kicker">
-            We zagen in ons restaurant hoe belangrijk online zichtbaarheid is — en hoe vaak websites te duur of te gedoe zijn.
-          </p>
-        </div>
-      </div>
+      <p class="testiLead">
+        Zo sta je binnen no time sterker online: beter vindbaar, professioneler, en meer directe bestellingen.
+      </p>
 
-      <div class="grid3">
-        <div class="miniCard" style="grid-column: span 2;">
-          <h3 style="margin-top:0;">Waarom Webbo Horeca bestaat</h3>
+      <p class="eyebrow" style="margin-top:56px;">TESTIMONIALS</p>
+      <h2>Onze klanten<br>vertellen</h2>
+
+      <div class="testiGrid">
+        <div class="quote">
           <p>
-            We merkten dat concurrenten sneller meegingen met de tijd, dat klanten ons online niet goed konden vinden,
-            en dat websites laten maken vaak duur en traag was. We zijn zelf gaan bouwen, hebben fouten gemaakt,
-            en daardoor weten we nu precies wat werkt.
+            “Onze website is eindelijk duidelijk. Klanten vinden het menu meteen en bestellen sneller.
+            We merken echt verschil in directe bestellingen.”
           </p>
-          <p style="margin-top:10px;">
-            Resultaat: betere SEO, hogere conversie en meer directe bestellingen via de eigen website.
-            Dat willen we nu ook voor andere horecaondernemers regelen.
+          <div class="who">
+            <div class="brandCircle">🍕</div>
+            <div>
+              <b>Horeca klant</b>
+              <span>Eigenaar • Amstelveen</span>
+            </div>
+          </div>
+          <div class="qmark">”</div>
+        </div>
+
+        <div class="quote">
+          <p>
+            “Snel gebouwd, netjes design en alles werkt goed op mobiel. Wij kregen veel minder vragen
+            over openingstijden en locatie—alles staat meteen duidelijk.”
           </p>
-        </div>
-
-        <div class="miniCard">
-          <div class="pill"><span class="dot"></span> Focus</div>
-          <h3>Online verkoopkanaal</h3>
-          <p>Niet alleen “mooi”, maar helder: menu, knoppen en flow die klanten laat bestellen.</p>
+          <div class="who">
+            <div class="brandCircle" style="background:rgba(167,205,255,.30);">🥗</div>
+            <div>
+              <b>Horeca klant</b>
+              <span>Lunchroom • Noord-Holland</span>
+            </div>
+          </div>
+          <div class="qmark">”</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PAKKETTEN -->
-  <section class="section" id="pakketten">
+  <!-- CASES -->
+  <section class="section center" id="cases">
     <div class="wrap">
-      <div class="head">
-        <div>
-          <h2>Pakketten</h2>
-          <p class="kicker">Zet hier je echte prijzen. Dit zijn placeholders zodat je layout klopt.</p>
-        </div>
-      </div>
+      <p class="eyebrow">KLANTVERHALEN</p>
+      <h2>Voorbeelden</h2>
 
-      <div class="pricing">
-        <div class="card priceCard">
-          <h3 style="margin:0;">Start</h3>
-          <div class="price">€499 <small>eenmalig</small></div>
-          <ul class="ul">
-            <li>1 pagina landing</li>
-            <li>Menu + CTA knoppen</li>
-            <li>Mobiel geoptimaliseerd</li>
-            <li>Basis SEO</li>
-          </ul>
-          <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
-            <a class="btn primary" href="#contact">Kies Start</a>
-            <a class="btn" href="#faq">Vragen?</a>
+      <div class="casesGrid">
+        <article class="case">
+          <div class="caseImg" style="background-image:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1600&q=70');"></div>
+          <div class="caseBody">
+            <h3 class="caseTitle">Pizzeria — meer directe bestellingen</h3>
+            <div class="caseMeta">
+              <div>Focus: menu + CTA flow</div>
+              <div>Resultaat: minder afhakers op mobiel</div>
+            </div>
+            <a class="caseLink" href="#contact">Lees case study →</a>
           </div>
-        </div>
+        </article>
 
-        <div class="card priceCard" style="border:2px solid rgba(37,99,235,.22);">
-          <h3 style="margin:0;">Horeca Pro</h3>
-          <div class="price">€899 <small>eenmalig</small></div>
-          <ul class="ul">
-            <li>Tot 5 pagina’s</li>
-            <li>Conversie-setup</li>
-            <li>SEO basis + structuur</li>
-            <li>WhatsApp/Bel/Reserveer</li>
-          </ul>
-          <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
-            <a class="btn primary" href="#contact">Kies Pro</a>
-            <a class="btn" href="#proces">Proces</a>
+        <article class="case">
+          <div class="caseImg" style="background-image:url('https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1600&q=70');"></div>
+          <div class="caseBody">
+            <h3 class="caseTitle">Restaurant — beter vindbaar in Google</h3>
+            <div class="caseMeta">
+              <div>Focus: SEO basis + pagina-structuur</div>
+              <div>Resultaat: meer verkeer via zoeken</div>
+            </div>
+            <a class="caseLink" href="#contact">Lees case study →</a>
           </div>
-        </div>
-
-        <div class="card priceCard">
-          <h3 style="margin:0;">Groei</h3>
-          <div class="price">€1299 <small>eenmalig</small></div>
-          <ul class="ul">
-            <li>Alles uit Pro</li>
-            <li>NL/EN basis</li>
-            <li>Extra conversie optimalisatie</li>
-            <li>Optioneel onderhoud</li>
-          </ul>
-          <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
-            <a class="btn primary" href="#contact">Kies Groei</a>
-            <a class="btn" href="#voordelen">Voordelen</a>
-          </div>
-        </div>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- FAQ -->
-  <section class="section" id="faq">
+  <!-- CTA / CONTACT -->
+  <section class="section center" id="contact" style="padding-bottom: 70px;">
     <div class="wrap">
-      <div class="head">
-        <div>
-          <h2>FAQ</h2>
-          <p class="kicker">De vragen die horecaondernemers meestal stellen.</p>
-        </div>
-      </div>
+      <h2>Plan een demo in</h2>
+      <p class="sub" style="margin:16px auto 0; max-width: 70ch;">
+        Maak kennis met Webbo Horeca. Vul je gegevens in en plan gratis een demo.
+        We vertellen je precies wat je nodig hebt voor meer directe bestellingen.
+      </p>
 
-      <details>
-        <summary>Hoe snel kunnen jullie opleveren?</summary>
-        <p>Vaak binnen 3–10 dagen, afhankelijk van je pagina’s en of menu/foto’s al klaar zijn.</p>
-      </details>
+      <div class="ctaBox">
+        <!-- Dit is een demo-form (zonder backend). Wil je dat ik 'm naar Formspree/Netlify forms zet? -->
+        <form class="form" onsubmit="event.preventDefault(); alert('Top! Demo aanvraag is klaar (koppel dit later aan Formspree/Netlify).');">
+          <input class="input" type="text" placeholder="Bedrijfsnaam" required>
+          <input class="input" type="text" placeholder="Naam" required>
+          <input class="input" type="email" placeholder="E-mail" required>
+          <input class="input" type="tel" placeholder="Telefoon / WhatsApp">
+          <textarea class="input full" placeholder="Wat wil je verbeteren? (bestellen, reserveren, catering, SEO)" required></textarea>
 
-      <details>
-        <summary>Moet ik zelf tekst en foto’s aanleveren?</summary>
-        <p>Mag, maar hoeft niet. Jij levert wat je hebt; wij maken het professioneel en conversiegericht.</p>
-      </details>
+          <div class="formActions">
+            <button class="btn btnMint" type="submit">Demo aanvragen</button>
+            <a class="btn btnGhost" href="https://wa.me/31600000000">WhatsApp</a>
+          </div>
+        </form>
 
-      <details>
-        <summary>Kunnen jullie koppelen met bestellen/reserveren?</summary>
-        <p>Ja. We voegen knoppen/koppelingen toe naar jouw systeem of zetten iets simpels op (afhankelijk van wens).</p>
-      </details>
-
-      <details>
-        <summary>Werkt dit ook als ik al op Thuisbezorgd sta?</summary>
-        <p>Juist. Je website is je eigen kanaal om terugkerende klanten direct te laten bestellen (minder commissie).</p>
-      </details>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="section" id="contact">
-    <div class="wrap">
-      <div class="cta">
-        <div>
-          <h3>Gratis intake (15 min) — dan weet je meteen wat mogelijk is</h3>
-          <p>Stuur je bedrijfsnaam + wat je wil (bestellen/reserveren/catering). We reageren snel.</p>
-        </div>
-
-        <!-- VERVANG CONTACT -->
-        <div style="display:flex; gap:10px; flex-wrap:wrap;">
-          <a class="btn" href="tel:+31600000000">Bel</a>
-          <a class="btn" href="mailto:info@webbohoreca.nl">Mail</a>
-          <a class="btn primary" href="https://wa.me/31600000000">WhatsApp</a>
-        </div>
+        <p class="sub" style="margin:14px 0 0; font-size:14px;">
+          Vervang de WhatsApp link en contactgegevens hierboven met jouw echte nummer.
+        </p>
       </div>
     </div>
   </section>
@@ -649,7 +901,9 @@
       <div class="footRow">
         <div>© <span id="y"></span> Webbo Horeca</div>
         <div>
-          <a href="#home">Home</a> • <a href="#pakketten">Pakketten</a> • <a href="#contact">Contact</a>
+          <a href="#hoe">Hoe werkt het</a> •
+          <a href="#cases">Cases</a> •
+          <a href="#contact">Contact</a>
         </div>
       </div>
     </div>

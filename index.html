@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Webbo Horeca — Websites die gevonden worden & verkopen</title>
-  <meta name="description" content="Webbo Horeca bouwt snelle websites voor horeca: beter vindbaar, hogere conversie en meer directe bestellingen zonder commissies." />
+  <meta name="description" content="Webbo Horeca bouwt snelle websites voor horeca: beter vindbaar, meer bestellingen en minder commissie." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,7 +28,6 @@
       --card:#ffffff;
       --shadow: 0 18px 60px rgba(43,21,80,.12);
       --shadow2: 0 10px 30px rgba(43,21,80,.10);
-      --radius:24px;
 
       --max:1180px;
     }
@@ -47,6 +46,7 @@
     }
     a{color:inherit; text-decoration:none}
     .wrap{max-width:var(--max); margin:0 auto; padding:0 20px;}
+    .center{ text-align:center; }
 
     /* NAV (groter) */
     .nav{
@@ -87,7 +87,7 @@
       color: rgba(43,21,80,.82);
       align-items:center;
       flex-wrap:wrap;
-      font-size: 16px; /* groter */
+      font-size: 16px;
     }
     .links a{padding: 12px 12px; border-radius: 16px;}
     .links a:hover{background: rgba(43,21,80,.05);}
@@ -103,6 +103,9 @@
       padding:12px 12px;
       border-radius: 16px;
       font-size: 16px;
+      background:none;
+      border:0;
+      cursor:pointer;
     }
     .login:hover{background: rgba(22,214,180,.10);}
 
@@ -155,7 +158,7 @@
       color: rgba(43,21,80,.62);
       font-size: 18px;
       line-height:1.65;
-      max-width: 56ch;
+      max-width: 58ch;
       font-weight:600;
     }
     .heroBadges{
@@ -181,7 +184,6 @@
       color: var(--mint2);
       font-weight: 900;
     }
-
     .heroCtas{
       margin-top: 22px;
       display:flex;
@@ -206,15 +208,6 @@
       position:relative;
       min-height: 480px;
     }
-    .heroPersonWrap{
-      position:absolute;
-      right: 0;
-      bottom: -10px;
-      width: min(520px, 100%);
-      display:flex;
-      justify-content:flex-end;
-      pointer-events:none;
-    }
     .heroPersonShadow{
       position:absolute;
       right: 30px;
@@ -223,8 +216,16 @@
       height: 120px;
       border-radius: 999px;
       background: radial-gradient(circle at 30% 30%, rgba(22,214,180,.55), rgba(22,214,180,.15) 55%, transparent 70%);
-      filter: blur(0px);
       opacity:.9;
+      pointer-events:none;
+    }
+    .heroPersonWrap{
+      position:absolute;
+      right: 0;
+      bottom: -10px;
+      width: min(520px, 100%);
+      display:flex;
+      justify-content:flex-end;
       pointer-events:none;
     }
     .heroPerson{
@@ -255,11 +256,7 @@
     .bubble:nth-child(2){top: 118px; width:min(395px, 100%); left: 10px;}
     .bubble:nth-child(3){top: 210px; width:min(415px, 100%); left: -6px;}
 
-    .bar{
-      width: 5px;
-      height: 44px;
-      border-radius: 99px;
-    }
+    .bar{ width: 5px; height: 44px; border-radius: 99px; }
     .bar.orange{background:#FFB84D;}
     .bar.pink{background:#FF6FA3;}
     .bar.blue{background:#6EA7FF;}
@@ -268,10 +265,7 @@
     .bText{margin:4px 0 0; color: rgba(43,21,80,.62); font-weight:650}
 
     /* SECTION base */
-    .section{
-      padding: 90px 0;
-    }
-    .center{ text-align:center; }
+    .section{ padding: 90px 0; }
     .eyebrow{
       letter-spacing: .24em;
       text-transform: uppercase;
@@ -288,7 +282,7 @@
       line-height: 1.05;
     }
 
-    /* 7) Voor wie (netter en aantrekkelijker) */
+    /* Voor wie (netter) */
     .forWho{
       margin-top: 26px;
       display:flex;
@@ -382,6 +376,241 @@
       font-weight:650;
     }
 
+    /* Process */
+    .processGrid{
+      margin-top: 64px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      align-items:center;
+    }
+    .mock{
+      background: rgba(255,255,255,.65);
+      border: 1px solid rgba(43,21,80,.08);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      padding: 18px;
+      position:relative;
+      overflow:hidden;
+    }
+    .mockTop{
+      height: 18px;
+      border-radius: 12px;
+      background: var(--purple);
+      opacity:.95;
+      margin-bottom: 16px;
+    }
+    .mockRow{
+      display:flex;
+      gap: 12px;
+      align-items:center;
+      padding: 12px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.88);
+      border: 1px solid rgba(43,21,80,.06);
+      box-shadow: 0 10px 28px rgba(43,21,80,.10);
+      margin-bottom: 12px;
+    }
+    .avatar{
+      width: 44px; height:44px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(22,214,180,.25), rgba(177,122,255,.20));
+      border: 1px solid rgba(43,21,80,.06);
+    }
+    .name{font-weight:900}
+    .meta{color: rgba(43,21,80,.55); font-weight:700; font-size: 13px; margin-top:2px}
+    .score{
+      margin-left:auto;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:900;
+      color: var(--mint2);
+    }
+    .barline{
+      width: 140px; height: 10px;
+      border-radius: 999px;
+      background: rgba(43,21,80,.10);
+      overflow:hidden;
+    }
+    .barfill{
+      height:100%;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--mint), var(--mint2));
+    }
+    .procTitle{
+      margin:0 0 12px;
+      font-size: 52px;
+      font-weight: 900;
+      letter-spacing:-0.05em;
+      line-height:1.05;
+    }
+    .procText{
+      margin:0;
+      color: rgba(43,21,80,.60);
+      font-weight:650;
+      font-size: 18px;
+      line-height:1.75;
+      max-width: 58ch;
+    }
+
+    /* Testimonials */
+    .testiLead{
+      margin: 26px auto 0;
+      max-width: 80ch;
+      color: rgba(43,21,80,.72);
+      font-weight:650;
+      font-size: 22px;
+      line-height:1.6;
+    }
+    .testiGrid{
+      margin-top: 56px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      align-items:stretch;
+    }
+    .quote{
+      background: rgba(255,255,255,.75);
+      border: 1px solid rgba(43,21,80,.08);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 34px;
+      position:relative;
+      overflow:hidden;
+      min-height: 240px;
+    }
+    .quote p{
+      margin:0;
+      color: rgba(43,21,80,.60);
+      font-style: italic;
+      font-weight:650;
+      font-size: 18px;
+      line-height:1.75;
+    }
+    .who{
+      margin-top: 22px;
+      display:flex;
+      gap: 14px;
+      align-items:center;
+    }
+    .brandCircle{
+      width: 54px; height: 54px;
+      border-radius: 999px;
+      background: rgba(255,205,125,.35);
+      display:grid;
+      place-items:center;
+      font-weight:900;
+      color: rgba(43,21,80,.85);
+    }
+    .who b{display:block; font-size: 22px; letter-spacing:-0.03em}
+    .who span{display:block; color: rgba(43,21,80,.55); font-weight:700; margin-top:2px}
+    .qmark{
+      position:absolute;
+      right: 24px;
+      bottom: 22px;
+      font-size: 64px;
+      color: rgba(43,21,80,.18);
+      font-weight:900;
+    }
+
+    /* Cases */
+    .casesGrid{
+      margin-top: 54px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+    .case{
+      background: rgba(255,255,255,.70);
+      border: 1px solid rgba(43,21,80,.08);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .caseImg{
+      height: 260px;
+      background-size: cover;
+      background-position:center;
+    }
+    .caseBody{padding: 22px 24px 26px;}
+    .caseTitle{
+      margin: 0 0 10px;
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing:-0.03em;
+      line-height:1.2;
+    }
+    .caseMeta{
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+      color: rgba(43,21,80,.55);
+      font-weight:700;
+      margin-top: 10px;
+    }
+    .caseLink{
+      margin-top: 10px;
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      color: var(--mint2);
+      font-weight:900;
+    }
+
+    /* Contact */
+    .ctaBox{
+      margin-top: 58px;
+      background: rgba(255,255,255,.74);
+      border: 1px solid rgba(43,21,80,.08);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 26px;
+      max-width: 980px;
+      margin-left:auto;
+      margin-right:auto;
+    }
+    .form{
+      margin-top: 18px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .input{
+      width:100%;
+      padding: 14px 14px;
+      border-radius: 16px;
+      border: 1px solid rgba(43,21,80,.10);
+      background: rgba(255,255,255,.95);
+      font-weight:650;
+      outline:none;
+      color: var(--purple);
+    }
+    .input:focus{border-color: rgba(22,214,180,.55); box-shadow: 0 0 0 4px rgba(22,214,180,.15);}
+    .full{grid-column: 1 / -1;}
+    textarea.input{min-height: 120px; resize: vertical;}
+    .formActions{
+      grid-column: 1 / -1;
+      display:flex;
+      gap: 12px;
+      flex-wrap:wrap;
+      align-items:center;
+      margin-top: 6px;
+    }
+
+    footer{
+      padding: 40px 0 70px;
+      color: rgba(43,21,80,.55);
+      font-weight:800;
+    }
+    .footRow{
+      display:flex;
+      justify-content:space-between;
+      gap: 14px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
     /* Login modal */
     .modalOverlay{
       position:fixed;
@@ -430,17 +659,6 @@
       margin-bottom: 8px;
       letter-spacing:.04em;
     }
-    .input{
-      width:100%;
-      padding: 14px 14px;
-      border-radius: 16px;
-      border: 1px solid rgba(43,21,80,.12);
-      background: rgba(255,255,255,.96);
-      font-weight:650;
-      outline:none;
-      color: var(--purple);
-    }
-    .input:focus{border-color: rgba(22,214,180,.55); box-shadow: 0 0 0 4px rgba(22,214,180,.15);}
     .row2{display:grid; grid-template-columns: 1fr 1fr; gap: 12px;}
     .muted{
       color: rgba(43,21,80,.62);
@@ -472,19 +690,6 @@
     }
     .status.show{display:block;}
 
-    footer{
-      padding: 40px 0 70px;
-      color: rgba(43,21,80,.55);
-      font-weight:800;
-    }
-    .footRow{
-      display:flex;
-      justify-content:space-between;
-      gap: 14px;
-      flex-wrap:wrap;
-      align-items:center;
-    }
-
     /* Responsive */
     @media (max-width: 1100px){
       .chipGrid{grid-template-columns: repeat(3, minmax(0, 1fr));}
@@ -493,6 +698,10 @@
       .heroGrid{grid-template-columns: 1fr; gap: 26px;}
       .stack{min-height: 420px;}
       .cards{grid-template-columns: 1fr 1fr;}
+      .processGrid{grid-template-columns: 1fr;}
+      .testiGrid{grid-template-columns: 1fr;}
+      .casesGrid{grid-template-columns: 1fr;}
+      .form{grid-template-columns: 1fr;}
       .row2{grid-template-columns: 1fr;}
     }
     @media (max-width: 720px){
@@ -567,7 +776,6 @@
         </div>
 
         <div class="stack" aria-label="Resultaat kaartjes + foto">
-          <!-- 5) en 6) aangepaste teksten in de bubbles -->
           <div class="bubble">
             <div class="bar orange"></div>
             <div>
@@ -590,10 +798,8 @@
             </div>
           </div>
 
-          <!-- 3) Foto (eigen afbeelding plaatsen) -->
           <div class="heroPersonShadow" aria-hidden="true"></div>
           <div class="heroPersonWrap" aria-hidden="true">
-            <!-- Zet je eigen (copyright-vrije) afbeelding in: /assets/hero-person.png -->
             <img class="heroPerson" src="assets/hero-person.png" alt="" />
           </div>
         </div>
@@ -601,13 +807,12 @@
     </div>
   </header>
 
-  <!-- 7) VOOR WIE (netter) -->
+  <!-- VOOR WIE -->
   <section class="section center" id="voorwie" style="padding-top:52px;">
     <div class="wrap">
       <div class="forWho">
         <p class="forWhoLead">
-          Voor horeca die beter zichtbaar wil zijn én meer klanten wil krijgen via de eigen website.
-          Denk aan:
+          Voor horeca die beter zichtbaar wil zijn én meer klanten wil krijgen via de eigen website. Denk aan:
         </p>
 
         <div class="chipGrid" aria-label="Doelgroepen">
@@ -670,10 +875,174 @@
     </div>
   </section>
 
-  <!-- (De rest van je pagina blijft zoals hij was) -->
-  <!-- Je bestaande sections: PROCES / TESTIMONIALS / CASES / CONTACT / FOOTER -->
-  <!-- Ik laat ze hier bewust weg om “niets anders veranderen” te respecteren. -->
-  <!-- Plak je bestaande onderkant hieronder terug als je die al had. -->
+  <!-- PROCES -->
+  <section class="section" id="hoe">
+    <div class="wrap center">
+      <p class="eyebrow">PROCES</p>
+      <h2>Zo simpel kan<br>online groeien zijn</h2>
+
+      <div class="processGrid">
+        <div class="mock" aria-label="Mock dashboard">
+          <div class="mockTop"></div>
+
+          <div class="mockRow">
+            <div class="avatar"></div>
+            <div>
+              <div class="name">Menu pagina</div>
+              <div class="meta">Knoppen: Bestellen • Reserveren</div>
+            </div>
+            <div class="score">
+              100%
+              <div class="barline"><div class="barfill" style="width:92%"></div></div>
+            </div>
+          </div>
+
+          <div class="mockRow">
+            <div class="avatar"></div>
+            <div>
+              <div class="name">Google vindbaarheid</div>
+              <div class="meta">Basis SEO staat goed</div>
+            </div>
+            <div class="score">
+              89%
+              <div class="barline"><div class="barfill" style="width:78%"></div></div>
+            </div>
+          </div>
+
+          <div class="mockRow" style="margin-bottom:0;">
+            <div class="avatar"></div>
+            <div>
+              <div class="name">Mobiel snelheid</div>
+              <div class="meta">Minder afhakers</div>
+            </div>
+            <div class="score">
+              74%
+              <div class="barline"><div class="barfill" style="width:66%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align:left;">
+          <p class="procTitle">Oplevering</p>
+          <p class="procText">
+            We starten met een korte intake. Daarna bouwen we jouw pagina’s, zetten alles live,
+            en verbeteren stap voor stap. Doel: meer klanten via je eigen website.
+          </p>
+          <div class="heroCtas" style="margin-top:22px;">
+            <a class="btn btnMint" href="#contact">Plan een demo</a>
+            <a class="btn btnGhost" href="#cases">Bekijk cases</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section center" id="testimonials">
+    <div class="wrap">
+      <p class="testiLead" style="margin-top:0;">
+        Je staat snel sterker online: duidelijker, beter vindbaar en makkelijker om bij jou te bestellen.
+      </p>
+
+      <p class="eyebrow" style="margin-top:56px;">TESTIMONIALS</p>
+      <h2>Onze klanten<br>vertellen</h2>
+
+      <div class="testiGrid">
+        <div class="quote">
+          <p>
+            “Onze website is eindelijk duidelijk. Klanten vinden het menu meteen en bestellen sneller.
+            We merken echt verschil.”
+          </p>
+          <div class="who">
+            <div class="brandCircle">🍕</div>
+            <div>
+              <b>Horeca klant</b>
+              <span>Eigenaar • Noord-Holland</span>
+            </div>
+          </div>
+          <div class="qmark">”</div>
+        </div>
+
+        <div class="quote">
+          <p>
+            “Snel gebouwd en ziet er netjes uit. Alles werkt goed op mobiel.
+            Minder vragen, meer bestellingen.”
+          </p>
+          <div class="who">
+            <div class="brandCircle" style="background:rgba(167,205,255,.30);">🥗</div>
+            <div>
+              <b>Horeca klant</b>
+              <span>Lunchroom • Amsterdam</span>
+            </div>
+          </div>
+          <div class="qmark">”</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASES -->
+  <section class="section center" id="cases">
+    <div class="wrap">
+      <p class="eyebrow">KLANTVERHALEN</p>
+      <h2>Voorbeelden</h2>
+
+      <div class="casesGrid">
+        <article class="case">
+          <div class="caseImg" style="background-image:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1600&q=70');"></div>
+          <div class="caseBody">
+            <h3 class="caseTitle">Pizzeria — meer directe bestellingen</h3>
+            <div class="caseMeta">
+              <div>Focus: menu + knoppen</div>
+              <div>Resultaat: sneller besteld op mobiel</div>
+            </div>
+            <a class="caseLink" href="#contact">Vraag demo →</a>
+          </div>
+        </article>
+
+        <article class="case">
+          <div class="caseImg" style="background-image:url('https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=1600&q=70');"></div>
+          <div class="caseBody">
+            <h3 class="caseTitle">Restaurant — beter vindbaar in Google</h3>
+            <div class="caseMeta">
+              <div>Focus: basis SEO + structuur</div>
+              <div>Resultaat: meer bezoekers via zoeken</div>
+            </div>
+            <a class="caseLink" href="#contact">Vraag demo →</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section center" id="contact" style="padding-bottom: 70px;">
+    <div class="wrap">
+      <h2>Plan een demo in</h2>
+      <p class="sub" style="margin:16px auto 0; max-width: 70ch;">
+        Vul je gegevens in. Dan nemen we contact op en laten we zien wat we voor jouw zaak kunnen doen.
+      </p>
+
+      <div class="ctaBox">
+        <form class="form" onsubmit="event.preventDefault(); alert('Top! Demo aanvraag is verzonden (koppel dit later aan Formspree/Netlify).');">
+          <input class="input" type="text" placeholder="Bedrijfsnaam" required>
+          <input class="input" type="text" placeholder="Naam" required>
+          <input class="input" type="email" placeholder="E-mail" required>
+          <input class="input" type="tel" placeholder="Telefoon / WhatsApp">
+          <textarea class="input full" placeholder="Wat wil je verbeteren? (bestellen, reserveren, vindbaarheid)" required></textarea>
+
+          <div class="formActions">
+            <button class="btn btnMint" type="submit">Demo aanvragen</button>
+            <a class="btn btnGhost" href="https://wa.me/31600000000">WhatsApp</a>
+          </div>
+        </form>
+
+        <p class="sub" style="margin:14px 0 0; font-size:14px;">
+          Vervang de WhatsApp link met jouw echte nummer.
+        </p>
+      </div>
+    </div>
+  </section>
 
   <footer>
     <div class="wrap">
@@ -721,7 +1090,7 @@
         </div>
 
         <p class="muted" style="margin-top:14px;">
-          Tip: dit is “echt” zodra je Supabase invult (gratis). Zonder keys werkt het niet.
+          Tip: dit werkt pas echt als je Supabase keys invult (gratis).
         </p>
       </div>
     </div>
@@ -731,7 +1100,7 @@
     document.getElementById("y").textContent = new Date().getFullYear();
 
     /* ===========================
-       2) ECHTE LOGIN / ACCOUNT
+       ECHTE LOGIN / ACCOUNT
        ===========================
        Maak gratis Supabase project:
        - Authentication aanzetten
@@ -833,4 +1202,3 @@
   </script>
 </body>
 </html>
-
